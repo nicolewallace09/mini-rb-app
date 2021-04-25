@@ -1,6 +1,10 @@
 <template>
     <div>
-    <p>This header is working</p>
+        <b-navbar class="nav">
+            <b-navbar-brand href="#" class="mx-auto">
+                <span class="nav-text">MINI</span>  <img src="../../src/assets/logo.png" class="d-inline-block align-top" alt="rockbot-logo">
+            </b-navbar-brand>
+        </b-navbar>
     </div>
 </template>
 
@@ -13,20 +17,33 @@ export default {
 }
 </script>
 
+<!-- Rockbot blue #3f86e6-->
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+img {
+    height: 2.5rem;
+    width: 15rem;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+.nav {
+    background-color:#3f86e6; 
+    /* position: sticky */
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+
+.nav-text {
+    font-size: 2.3rem;
 }
-a {
-  color: #42b983;
+
+/* mobile devices */ 
+@media only screen and (max-width: 600px) {
+    img {
+    height: 1.5rem;
+    width: 10rem;
+    }
+
+    .nav-text {
+    font-size: 1.3rem;
+    }
 }
+
 </style>

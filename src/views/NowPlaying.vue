@@ -1,7 +1,6 @@
 <!-- HTML here -->
 <template>
 
-
 </template>
 
 <!-- props here -->
