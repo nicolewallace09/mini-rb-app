@@ -1,21 +1,22 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <Header/>
-    Yes, Nicole this works
+    <ComingUp/>
+    <!-- <NowPlaying/> -->
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header'
+import ComingUp from './components/ComingUp'
+// import NowPlaying from './components/NowPlaying'
 
 export default {
   name: 'App',
   components: {
-    //HelloWorld
-    Header
+    Header,
+     // NowPlaying,
+    ComingUp,
   }
 }
 </script>

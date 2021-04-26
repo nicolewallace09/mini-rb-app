@@ -1,16 +1,17 @@
 <!-- HTML here -->
 <template>
-
-
+    <div>
+        
+    </div>
 </template>
 
 <!-- props here -->
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
+  name: 'Tabs',
+//   props: {
+//     msg: String
+//   }
 }
 </script>
 

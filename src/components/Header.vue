@@ -2,7 +2,7 @@
     <div>
         <b-navbar class="nav">
             <b-navbar-brand href="#" class="mx-auto">
-                <span class="nav-text">MINI</span>  <img src="../../src/assets/logo.png" class="d-inline-block align-top" alt="rockbot-logo">
+                <span class="nav-text align-self-center">MINI</span>  <img src="../../src/assets/logo.png" class="d-inline-block align-self-center" alt="rockbot-logo">
             </b-navbar-brand>
         </b-navbar>
     </div>
@@ -31,7 +31,7 @@ img {
 }
 
 .nav-text {
-    font-size: 2.3rem;
+    font-size: 2.5rem;
 }
 
 /* mobile devices */ 
