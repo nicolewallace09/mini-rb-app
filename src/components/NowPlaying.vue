@@ -1,6 +1,8 @@
 <!-- component for displaying the now playing song to be used in the playlist page -->
 <template>
   <b-container>
+    <div class="title">NOW PLAYING</div>
+
     <div v-for="music, key in playlist" :key="key">
       <div class="music-info">
           <img class="artwork" :src="music.artwork_small">
@@ -31,7 +33,7 @@ export default {
       fetch('https://api.rockbot.com/v3/engage/now_playing', {
         method: 'get',
         headers: {
-        Authorization: ''
+        Authorization: process.env.VUE_APP_API_KEY
         }
       })
         .then((response) => {

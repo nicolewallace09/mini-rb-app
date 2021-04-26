@@ -34,7 +34,7 @@ export default {
       fetch('https://api.rockbot.com/v3/engage/top_artists', {
         method: 'get',
         headers: {
-        Authorization: ''
+        Authorization: process.env.VUE_APP_API_KEY
         }
       })
         .then((response) => {

@@ -43,7 +43,7 @@ export default {
       fetch('https://api.rockbot.com/v3/engage/now_playing?queue=5', {
         method: 'get',
         headers: {
-        Authorization: ''
+        Authorization: process.env.VUE_APP_API_KEY
         }
       })
         .then((response) => {

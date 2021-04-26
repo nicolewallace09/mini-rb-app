@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <Header/>
-    <!-- <NowPlaying/> -->
-    <!-- <ComingUp/> -->
+    <!-- <NowPlaying/> 
+    <ComingUp/>  -->
     <TopArtists/>
 
   </div>
@@ -18,7 +18,7 @@ export default {
   name: 'App',
   components: {
     Header,
-     // NowPlaying,
+    // NowPlaying,
     // ComingUp,
     TopArtists
   }
