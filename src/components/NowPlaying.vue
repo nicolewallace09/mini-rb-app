@@ -1,6 +1,6 @@
 <!-- component for displaying the now playing song to be used in the playlist page -->
 <template>
-  <b-container>
+  <b-container class="mt-2">
     <div class="title">NOW PLAYING</div>
 
     <div v-for="music, key in playlist" :key="key">

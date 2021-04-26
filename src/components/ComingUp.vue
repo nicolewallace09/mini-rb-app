@@ -1,6 +1,6 @@
 <!-- component to store the coming up queue to be ued in the playlist page -->
 <template>
-  <b-container>
+  <b-container class="mt-2">
     <div class="title">UP NEXT:</div>
 
     <b-row align-h="center">

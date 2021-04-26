@@ -1,19 +1,22 @@
 <!-- component to display top artisted to be used in the request page -->
 <template>
-  <b-container class="horizontal-scrollable">
-    <div class="title">TOP ARTISTS</div>
+  <div class="component-container">
+    <div class="title mt-1 ml-2">TOP ARTISTS</div>
 
+  <b-container fluid class="container d-flex mt-1">
     <div v-for="artist, key in artists" :key="key">
-      <b-row class="scrolling-wrapper row flex-row flex-nowrap mt-1 pb-1 pt-1">
-        <b-col cols="7">
-          <b-card class="music-info">
+      <b-row class="music-row">
+        <b-col cols="12">
+          <b-card-group class="music-info">
             <img class="artwork center" :src="artist.artwork_small">
-            <p class="name text-center">{{artist.artist}}</p>
-          </b-card>
+            <p class="name text-center mt-2">{{artist.artist}}</p>
+          </b-card-group>
         </b-col>
       </b-row>
     </div> 
+ 
   </b-container>
+</div>
 </template>
 
 <script>
@@ -62,6 +65,13 @@ export default {
   width: 50%;
 }
 
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  overflow-x: auto;
+}
+
 .title {
   font-size: 1.5rem;
 }
@@ -71,24 +81,25 @@ export default {
   font-size: 1rem;
 }
 
-.scrolling-wrapper{
-	overflow-x: auto;
-  flex-wrap: nowrap;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: none;
+.card-group {
+  border: none;
+  width: 15rem; 
+  height: 15rem;
 }
 
 /* mobile devices */ 
 @media only screen and (max-width: 600px) {
   .name {
-    font-size: 0.8rem;
+    font-size: 0.5rem;
   }
 
   .title {
     font-size: 1rem;
+  }
+
+  .card-group {
+    width: 8rem; 
+    height: 8rem;
   }
 
 }
