@@ -1,9 +1,6 @@
 <!-- component to display top artisted to be used in the request page -->
 <template>
-  <div class="component-container">
-    <div class="title mt-1 ml-2">TOP ARTISTS</div>
-
-  <b-container fluid class="container d-flex mt-1">
+  <b-container class="container d-flex mt-1">
     <div v-for="artist, key in artists" :key="key">
       <b-row class="music-row">
         <b-col cols="12">
@@ -13,10 +10,8 @@
           </b-card>
         </b-col>
       </b-row>
-    </div> 
- 
+    </div>    
   </b-container>
-</div>
 </template>
 
 <script>
@@ -70,10 +65,6 @@ export default {
   flex-wrap: nowrap;
   flex-direction: row;
   overflow-x: auto;
-}
-
-.title {
-  font-size: 1.5rem;
 }
 
 .name {

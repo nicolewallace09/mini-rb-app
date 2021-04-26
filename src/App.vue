@@ -3,8 +3,7 @@
     <Header/>
     <!-- <NowPlaying/> 
     <ComingUp/>  -->
-    <TopArtists/>
-
+    <Playlist/>
   </div>
 </template>
 
@@ -12,7 +11,7 @@
 import Header from './components/Header'
 // import NowPlaying from './components/NowPlaying'
 // import ComingUp from './components/ComingUp'
-import TopArtists from './components/TopArtists'
+import Playlist from './views/Playlist'
 
 export default {
   name: 'App',
@@ -20,7 +19,7 @@ export default {
     Header,
     // NowPlaying,
     // ComingUp,
-    TopArtists
+    Playlist
   }
 }
 </script>
