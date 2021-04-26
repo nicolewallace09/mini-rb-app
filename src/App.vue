@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <Header/>
-    <!-- <NowPlaying/> 
-    <ComingUp/>  -->
+    <!-- <NowPlaying/>  -->
+    <ComingUp/>  
     <Playlist/>
   </div>
 </template>
@@ -10,7 +10,7 @@
 <script>
 import Header from './components/Header'
 // import NowPlaying from './components/NowPlaying'
-// import ComingUp from './components/ComingUp'
+import ComingUp from './components/ComingUp'
 import Playlist from './views/Playlist'
 
 export default {
@@ -18,7 +18,7 @@ export default {
   components: {
     Header,
     // NowPlaying,
-    // ComingUp,
+    ComingUp,
     Playlist
   }
 }
