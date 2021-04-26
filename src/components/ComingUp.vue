@@ -1,4 +1,4 @@
-<!-- HTML here -->
+<!-- component to store the coming up queue to be ued in the playlist page -->
 <template>
   <b-container>
     <div class="title">UP NEXT:</div>
@@ -25,28 +25,25 @@
   </b-container>
 </template>
 
-<!-- props here -->
 <script>
 export default {
   name: 'ComingUp',
   data() {
-    // setting playlist to an empty array and adding the json data from the api
+    // setting queue to an empty array and adding the json data from the api
     return {
-      queue: [],
-    //   index: 0
+      queue: []
     }
   }, 
   mounted() {
     this.getComingUp()
   }, 
   methods: {
-    // fetch api data and getting the json response then to add it to the playlist data
+    // fetch api data then using it to store in our data
     getComingUp() {
       fetch('https://api.rockbot.com/v3/engage/now_playing?queue=5', {
         method: 'get',
         headers: {
-        // adding authorization to make key private 
-        Authorization: '2ab742c917f872aa88644bc8f995e03159b2'
+        Authorization: ''
         }
       })
         .then((response) => {
@@ -60,7 +57,6 @@ export default {
 }
 </script>
 
-<!-- css here -->
 <style scoped>
 .artwork {
     border-radius: 20px;
@@ -73,5 +69,4 @@ export default {
         width: 5rem;
     }
 }
-
 </style>

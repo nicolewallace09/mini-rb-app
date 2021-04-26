@@ -20,7 +20,6 @@ export default {
     // setting playlist to an empty array and adding the json data from the api
     return {
       playlist: [],
-      // index: 0
     }
   }, 
   mounted() {
@@ -32,8 +31,7 @@ export default {
       fetch('https://api.rockbot.com/v3/engage/now_playing', {
         method: 'get',
         headers: {
-        // adding authorization to make key private 
-        Authorization: process.env.VUE_APP_API_KEY
+        Authorization: ''
         }
       })
         .then((response) => {

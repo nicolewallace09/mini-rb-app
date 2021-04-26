@@ -3,13 +3,10 @@
 
 </template>
 
-<!-- props here -->
+<!-- data here -->
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
+  name: 'Search'
 }
 </script>
 

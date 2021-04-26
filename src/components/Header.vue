@@ -1,3 +1,4 @@
+<!-- Header component to be used in the main app -->
 <template>
     <div>
         <b-navbar class="nav">
@@ -10,15 +11,11 @@
 
 <script>
 export default {
-  name: 'Header',
-//   props: {
-//     msg: String
-//   }
+  name: 'Header'
 }
 </script>
 
 <!-- Rockbot blue #3f86e6-->
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 img {
     height: 2.5rem;

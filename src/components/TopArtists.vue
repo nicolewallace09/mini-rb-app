@@ -1,4 +1,4 @@
-<!-- HTML here -->
+<!-- component to display top artisted to be used in the request page -->
 <template>
   <b-container class="horizontal-scrollable">
     <div class="title">TOP ARTISTS</div>
@@ -16,27 +16,24 @@
   </b-container>
 </template>
 
-<!-- props here -->
 <script>
 export default {
   name: 'TopArtists',
   data() {
-    // setting playlist to an empty array and adding the json data from the api
+    // setting artists to an empty array and adding the json data from the api
     return {
-      artists: [],
-    //   index: 0
+      artists: []
     }
   }, 
   mounted() {
     this.getTopArtists()
   }, 
   methods: {
-    // fetch api data and getting the json response then to add it to the playlist data
+    // fetch api data and getting the json response to return artist info
     getTopArtists() {
       fetch('https://api.rockbot.com/v3/engage/top_artists', {
         method: 'get',
         headers: {
-        // adding authorization to make key private 
         Authorization: ''
         }
       })
@@ -51,7 +48,6 @@ export default {
 }
 </script>
 
-<!-- css here -->
 <style scoped>
 .artwork {
   border-radius: 50%;
