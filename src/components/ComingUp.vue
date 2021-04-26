@@ -16,7 +16,7 @@
                     <h6 class="song-title font-weight-bold">{{music.song}}</h6>
                     <p>{{music.artist}}</p>
                     <p>Likes: {{music.likes}}</p>
-                    <p><img src="../../src/assets/outline_thumb_up_off_alt_black_24dp.png"> {{music.dislikes}}</p>
+                    <p>Dislike: {{music.dislikes}}</p>
                 </div>
             </b-col>
         </div> 
@@ -46,7 +46,7 @@ export default {
         method: 'get',
         headers: {
         // adding authorization to make key private 
-        Authorization: process.env.VUE_APP_API_KEY
+        Authorization: '2ab742c917f872aa88644bc8f995e03159b2'
         }
       })
         .then((response) => {
@@ -69,8 +69,8 @@ export default {
 /* mobile devices */ 
 @media only screen and (max-width: 600px) {
     .artwork {
-    height: 5rem;
-    width: 5rem;
+        height: 5rem;
+        width: 5rem;
     }
 }
 

@@ -37,12 +37,12 @@ img {
 /* mobile devices */ 
 @media only screen and (max-width: 600px) {
     img {
-    height: 1.5rem;
-    width: 10rem;
+        height: 1.6rem;
+        width: 10rem;
     }
 
     .nav-text {
-    font-size: 1.3rem;
+        font-size: 1.3rem;
     }
 }
 
