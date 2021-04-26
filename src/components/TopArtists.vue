@@ -7,10 +7,10 @@
     <div v-for="artist, key in artists" :key="key">
       <b-row class="music-row">
         <b-col cols="12">
-          <b-card-group class="music-info">
+          <b-card class="music-info">
             <img class="artwork center" :src="artist.artwork_small">
             <p class="name text-center mt-2">{{artist.artist}}</p>
-          </b-card-group>
+          </b-card>
         </b-col>
       </b-row>
     </div> 
@@ -62,7 +62,7 @@ export default {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  /* width: 50%; */
 }
 
 .container {
@@ -81,7 +81,7 @@ export default {
   font-size: 1rem;
 }
 
-.card-group {
+.card {
   border: none;
   width: 15rem; 
   height: 15rem;
@@ -95,11 +95,6 @@ export default {
 
   .title {
     font-size: 1rem;
-  }
-
-  .card-group {
-    width: 8rem; 
-    height: 8rem;
   }
 
 }
