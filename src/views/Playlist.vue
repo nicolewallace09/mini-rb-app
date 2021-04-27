@@ -1,20 +1,18 @@
 <!-- HTML here -->
 <template>
-  <b-container class="mt-3">
-    TRENDING ARTISTS
-    <TopArtists/>
+  <b-container>
+    <ComingUp/>
   </b-container>
-
 </template>
 
 <!-- props here -->
 <script>
-import TopArtists from '../components/TopArtists'
+import ComingUp from '../components/ComingUp'
 
 export default {
   name: 'Playlist',
   components: {
-    TopArtists
+    ComingUp
   }
 }
 </script>

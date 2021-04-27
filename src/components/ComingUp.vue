@@ -94,7 +94,7 @@ p {
 }
 
 /* mobile devices */ 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 770px) {
   .artwork {
     height: 5rem;
     width: 5rem;
