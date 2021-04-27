@@ -6,13 +6,13 @@
     <div v-for="music, key in queue" :key="key">
       <b-card>
         <b-row>
-          <b-col cols="3">
+          <b-col cols="2">
             <div class="music-img">
               <img class="artwork" :src="music.artwork_small">
             </div>
           </b-col>
 
-          <b-col cols="7">
+          <b-col cols="8">
             <div class="music-info">
               <p class="song-title font-weight-bold">{{music.song}}</p>
               <p class="song-artist font-style-italic">{{music.artist}}</p>
@@ -63,15 +63,25 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&family=Paytone+One&family=Russo+One&family=Secular+One&display=swap');
 .artwork {
-  border-radius: 20px;
+  border-radius: 10px;
   margin-left: 5rem;
   margin-top: 1rem;
 }
 
 p {
-  line-height: 0.2px;
+  line-height: 0.5px;
   font-size: 1rem;
+  color: #fff;
+  font-family: 'Secular One', sans-serif;
+}
+
+.title {
+  color: #fff; 
+  font-weight: 500;
+  font-family: 'Secular One', sans-serif;
+  font-size: 1.1rem;
 }
 
 #icon {
@@ -81,11 +91,13 @@ p {
 
 .card {
   margin-bottom: 1rem;
+  background-color: #3f86e6;
+  box-shadow: 5px 5px 2px 1px #184274;  
+  text-overflow: ellipsis;
 }
 
 .music-info {
   margin: 5rem;
-  
 }
 
 .music-poll {
@@ -96,30 +108,30 @@ p {
 /* mobile devices */ 
 @media only screen and (max-width: 770px) {
   .artwork {
-    height: 5rem;
-    width: 5rem;
-    margin-left: 0rem;
+    height: 3rem;
+    width: 3rem;
+    margin-left: -0.5rem;
     margin-top: 0rem;
-
   }
 
   p {
     line-height: 0.2px;
-    font-size: 0.6rem;
+    font-size: 0.3rem;
   }
 
   #icon {
-  height: 0.9rem;
-  width: 0.9rem;
+    height: 0.9rem;
+    width: 0.9rem;
   }
 
   .music-info {
-    margin: 1.5rem;
+    margin: 1rem;
+    /* margin-left: 1rem; */
   }
 
   .music-poll {
-    margin-top: 1.5rem;
-    margin-left: -1.5rem;
+    margin-top: 1rem;
+    margin-left: -0.5rem;
   }
 }
 </style>

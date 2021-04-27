@@ -1,6 +1,7 @@
 <!-- HTML here -->
 <template>
   <b-container>
+    <NowPlaying/>
     <ComingUp/>
   </b-container>
 </template>
@@ -8,11 +9,13 @@
 <!-- props here -->
 <script>
 import ComingUp from '../components/ComingUp'
+import NowPlaying from '../components/NowPlaying'
 
 export default {
   name: 'Playlist',
   components: {
-    ComingUp
+    ComingUp,
+    NowPlaying
   }
 }
 </script>

@@ -3,7 +3,7 @@
     <div>
         <b-navbar class="nav">
             <b-navbar-brand href="#" class="mx-auto">
-                <span class="nav-text align-self-center">MINI</span>  <img src="../../src/assets/logo.png" class="d-inline-block align-self-center" alt="rockbot-logo">
+                <img src="../../src/assets/logo.png" class="d-inline-block align-self-center" alt="rockbot-logo">
             </b-navbar-brand>
         </b-navbar>
     </div>
