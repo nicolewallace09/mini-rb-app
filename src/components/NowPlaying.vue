@@ -66,19 +66,18 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&family=Paytone+One&family=Russo+One&family=Secular+One&display=swap');
-
 .artwork {
   border-radius: 10px;
   margin-left: 5rem;
   margin-top: 1rem;
+  height: 5rem;
+  width: 5rem;
 }
 
 p {
   line-height: 0.2px;
   font-size: 1rem;
   color: #000;
-  font-family: 'Secular One', sans-serif;
 }
 
 .title {

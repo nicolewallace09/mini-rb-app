@@ -19,7 +19,7 @@
               <p class="song-artist font-style-italic">{{music.artist}}</p>
             </div>
           </b-col>
-          
+
           <b-col cols="2">
             <div class="music-poll">
               <p><img src="https://img.icons8.com/cotton/64/000000/facebook-like--v1.png" id="icon"/> {{music.likes}}</p>
@@ -65,11 +65,12 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&family=Paytone+One&family=Russo+One&family=Secular+One&display=swap');
 .artwork {
   border-radius: 10px;
   margin-left: 5rem;
   margin-top: 1rem;
+  height: 5rem;
+  width: 5rem;
 }
 
 .container {
@@ -83,7 +84,6 @@ p {
   line-height: 1px;
   font-size: 1rem;
   color: #fff;
-  font-family: 'Secular One', sans-serif;
 }
 
 .title {

@@ -51,7 +51,7 @@ export default {
 <style scoped>
 .artwork {
   border-radius: 50%;
-  max-width: 100%;
+  max-width: 40%;
   height: auto;
 }
 
@@ -70,14 +70,15 @@ export default {
 }
 
 .name {
-  color: #3f86e6;
+  color: #fff;
   font-size: 1rem;
 }
 
 .card {
   border: none;
   width: 15rem; 
-  height: 15rem;
+  height: 12rem;
+  background-color: #3f86e6;
 }
 
 /* mobile devices */ 
@@ -88,6 +89,10 @@ export default {
 
   .title {
     font-size: 1rem;
+  }
+
+  .card {
+    margin-left: -5rem;
   }
 
 }
