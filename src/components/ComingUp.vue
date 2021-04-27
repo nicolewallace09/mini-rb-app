@@ -21,8 +21,7 @@
 
           <b-col cols="2">
             <div class="music-poll">
-              <p>L {{music.likes}}</p>
-              <p>D {{music.dislikes}}</p>
+              <p><img src="https://img.icons8.com/cotton/64/000000/facebook-like--v1.png" id="icon"/> {{music.likes}}</p>
             </div>
           </b-col>
         </b-row>
@@ -66,12 +65,18 @@ export default {
 <style scoped>
 .artwork {
   border-radius: 20px;
-  border: 2px red;
+  margin-left: 5rem;
+  margin-top: 1rem;
 }
 
 p {
   line-height: 0.2px;
   font-size: 1rem;
+}
+
+#icon {
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 .card {
@@ -93,11 +98,19 @@ p {
   .artwork {
     height: 5rem;
     width: 5rem;
+    margin-left: 0rem;
+    margin-top: 0rem;
+
   }
 
   p {
     line-height: 0.2px;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
+  }
+
+  #icon {
+  height: 0.9rem;
+  width: 0.9rem;
   }
 
   .music-info {
