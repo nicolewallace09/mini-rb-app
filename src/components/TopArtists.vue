@@ -1,6 +1,7 @@
 <!-- component to display top artisted to be used in the request page -->
 <template>
   <b-container class="container d-flex mt-1">
+    <!-- looping through the artist array to display data -->
     <div v-for="artist, key in artists" :key="key">
       <b-row class="music-row">
         <b-col cols="12">
@@ -32,6 +33,7 @@ export default {
       fetch('https://api.rockbot.com/v3/engage/top_artists', {
         method: 'get',
         headers: {
+         // requires API key for authorization --  create .env to store key 
         Authorization: process.env.VUE_APP_API_KEY
         }
       })

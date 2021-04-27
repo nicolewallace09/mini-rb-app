@@ -1,28 +1,25 @@
 <template>
   <div id="app" v-bind:style="{ backgroundColor: color}">
     <Header/>
-    <!-- <NowPlaying/>  
-    <ComingUp/> --> 
-    <Playlist/>  
+    <!-- <Playlist/>   -->
     <!-- <Request/>  -->
+    <Search/>
   </div>
 </template>
 
 <script>
 import Header from './components/Header'
-// import NowPlaying from './components/NowPlaying'
-// import ComingUp from './components/ComingUp'
-import Playlist from './views/Playlist'
+// import Playlist from './views/Playlist'
 // import Request from './views/Request'
+import Search from './components/Search'
 
 export default {
   name: 'App',
   components: {
     Header,
-    // NowPlaying,
-    // ComingUp,
-    Playlist
+    // Playlist,
     // Request
+    Search
   },
   data() {
     return {

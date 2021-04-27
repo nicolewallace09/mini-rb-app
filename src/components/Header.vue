@@ -1,4 +1,4 @@
-<!-- Header component to be used in the main app -->
+<!-- header component to be used in the main app -->
 <template>
     <div>
         <b-navbar class="nav">

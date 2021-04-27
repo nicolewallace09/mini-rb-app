@@ -3,6 +3,7 @@
   <b-container class="mt-2">
     <div class="title">UP NEXT:</div>
 
+    <!-- looping through the queue array to display information --> 
     <div v-for="music, key in queue" :key="key">
       <b-card>
         <b-row>
@@ -18,7 +19,7 @@
               <p class="song-artist font-style-italic">{{music.artist}}</p>
             </div>
           </b-col>
-
+          
           <b-col cols="2">
             <div class="music-poll">
               <p><img src="https://img.icons8.com/cotton/64/000000/facebook-like--v1.png" id="icon"/> {{music.likes}}</p>
@@ -48,6 +49,7 @@ export default {
       fetch('https://api.rockbot.com/v3/engage/now_playing?queue=5', {
         method: 'get',
         headers: {
+        // requires API key for authorization --  create .env to store key 
         Authorization: process.env.VUE_APP_API_KEY
         }
       })
@@ -70,8 +72,15 @@ export default {
   margin-top: 1rem;
 }
 
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  overflow: auto;
+}
+
 p {
-  line-height: 0.5px;
+  line-height: 1px;
   font-size: 1rem;
   color: #fff;
   font-family: 'Secular One', sans-serif;
