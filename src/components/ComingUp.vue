@@ -46,7 +46,7 @@ export default {
   methods: {
     // fetch api data then using it to store in our data
     getComingUp() {
-      fetch('https://api.rockbot.com/v3/engage/now_playing?queue=5', {
+      fetch('https://api.rockbot.com/v3/engage/now_playing?queue=1', {
         method: 'get',
         headers: {
         // requires API key for authorization --  create .env to store key 

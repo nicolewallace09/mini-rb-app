@@ -1,12 +1,12 @@
 <!-- component containing search bar and result cards -->
 <template>
-   <b-container fluid style="height: 100vh;">
+   <b-container>
     <!-- search input that takes in search term passed from getSearchInfo() -->
-    <input placeholder="SEARCH ARTISTS..." v-model="search" @input="getSearchInfo" name="align-cemter">
+    <input placeholder="SEARCH FOR ARTISTS..." v-model="search" @input="getSearchInfo" class="mb-3">
 
 
     <!-- looping through the search results to display information that user searched --> 
-    <div v-for="search in searchInfo" :key="search.artist_id" class="mt-3">
+    <div v-for="search in searchInfo" :key="search.artist_id" class="search-results mt-3">
       <b-card>
         <b-row>
           <b-col cols="2">
@@ -126,6 +126,10 @@ input:focus {
 .music-poll {
   margin-top: 5rem;
   margin-left: -1.5rem;
+}
+
+.search-results {
+  overflow: scroll;
 }
 
 /* mobile devices */ 
