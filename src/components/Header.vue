@@ -2,7 +2,7 @@
 <template>
     <div>
         <b-navbar class="nav">
-            <b-navbar-brand href="#" class="mx-auto">
+            <b-navbar-brand href="/" class="mx-auto">
                 <img src="../../src/assets/logo.png" class="d-inline-block align-self-center" alt="rockbot-logo">
             </b-navbar-brand>
         </b-navbar>

@@ -1,7 +1,5 @@
 # Mini Rockbot 
 
-![Github licence](http://img.shields.io/badge/license-MIT-blue.svg)
-
 ## Description 
 This is an application for Rockbot that uses REST API to allow users to see what's playing, vote, and request music. 
 

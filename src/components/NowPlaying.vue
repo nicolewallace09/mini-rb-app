@@ -9,22 +9,17 @@
           <b-row>
             <b-col cols="2">
               <div class="music-img">
-                <img class="artwork" :src="playlist.now_playing.artwork_small">
+                <img class="artwork" :src="playlist.artwork_small">
               </div>
             </b-col>
 
             <b-col cols="8">
               <div class="music-info">
-                <p class="song-title font-weight-bold">{{playlist.now_playing.song}}</p>
-                <p class="song-artist font-style-italic">{{playlist.now_playing.artist}}</p>
+                <p class="song-title font-weight-bold">{{playlist.song}}</p>
+                <p class="song-artist font-style-italic">{{playlist.artist}}</p>
               </div>
             </b-col>
 
-            <b-col cols="2">
-              <div class="music-poll">
-                <p><img src="https://img.icons8.com/cotton/64/000000/facebook-like--v1.png" id="icon"/> {{playlist.now_playing.likes}}</p>
-              </div>
-            </b-col>
           </b-row>
         </b-card>
       </div>
@@ -58,7 +53,7 @@ export default {
           return response.json()
         })
         .then((data) => {
-          this.playlist = data.response; 
+          this.playlist = data.response.now_playing; 
         })
     }
   }

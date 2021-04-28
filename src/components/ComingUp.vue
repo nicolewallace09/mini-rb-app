@@ -4,7 +4,7 @@
     <div class="title">UP NEXT:</div>
 
     <!-- looping through the queue array to display information --> 
-    <div v-for="music, key in queue" :key="key">
+    <div v-for="music in queue" :key="music.pick_id">
       <b-card>
         <b-row>
           <b-col cols="2">

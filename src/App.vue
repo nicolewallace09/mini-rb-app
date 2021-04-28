@@ -1,22 +1,20 @@
 <template>
   <div id="app" v-bind:style="{ backgroundColor: color}">
-    <Header/>
-    <Playlist/>  
-    <Request/> 
+      <Header/> 
+
+      <router-link to="/">Playlist</router-link>
+      <router-link to="/request">Request</router-link>
+      <router-view></router-view>
   </div>
 </template>
 
 <script>
 import Header from './components/Header'
-import Playlist from './views/Playlist'
-import Request from './views/Request'
 
 export default {
   name: 'App',
   components: {
-    Header,
-    Playlist,
-    Request
+    Header
   },
   data() {
     return {

@@ -1,4 +1,4 @@
-<!-- HTML here -->
+<!-- component containing search bar and result cards -->
 <template>
    <b-container fluid style="height: 100vh;">
     <!-- search input that takes in search term passed from getSearchInfo() -->
@@ -6,7 +6,7 @@
 
 
     <!-- looping through the search results to display information that user searched --> 
-    <div v-for="search, key in searchInfo" :key="key" class="mt-3">
+    <div v-for="search in searchInfo" :key="search.artist_id" class="mt-3">
       <b-card>
         <b-row>
           <b-col cols="2">
@@ -100,11 +100,16 @@ input {
   border: none;
   color: #fff;
   font-family: 'Secular One', sans-serif;
+  width: 100%;
 }
 
 input::placeholder {
   color: #fff;
   border: 5px black;
+}
+
+input:focus {
+  border-color: #184274;
 }
 
 .card {
