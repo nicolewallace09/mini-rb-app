@@ -83,7 +83,7 @@ export default {
 p {
   line-height: 1px;
   font-size: 1rem;
-  color: #fff;
+  color: #184274;
 }
 
 .title {

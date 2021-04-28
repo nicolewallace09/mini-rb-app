@@ -1,6 +1,6 @@
 <!-- HTML here -->
 <template>
-  <b-container class="mt-3">
+  <b-container>
     <div class="title">TRENDING ARTISTS</div>
     <TopArtists/>
     <Search/>

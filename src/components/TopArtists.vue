@@ -70,7 +70,7 @@ export default {
 }
 
 .name {
-  color: #fff;
+  color: #184274;
   font-size: 1rem;
 }
 

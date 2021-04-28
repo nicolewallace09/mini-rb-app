@@ -77,7 +77,7 @@ export default {
 p {
   line-height: 0.2px;
   font-size: 1rem;
-  color: #000;
+  color: #fff;
 }
 
 .title {

@@ -1,8 +1,9 @@
 <!-- HTML here -->
 <template>
-  <b-container>
+   <b-container fluid style="height: 100vh;">
     <!-- search input that takes in search term passed from getSearchInfo() -->
-    <input placeholder="Search Artists" v-model="search" @input="getSearchInfo">
+    <input placeholder="SEARCH ARTISTS..." v-model="search" @input="getSearchInfo" name="align-cemter">
+
 
     <!-- looping through the search results to display information that user searched --> 
     <div v-for="search, key in searchInfo" :key="key" class="mt-3">
@@ -79,7 +80,7 @@ export default {
 p {
   line-height: 1px;
   font-size: 1rem;
-  color: #fff;
+  color: #184274
 }
 
 .title {
@@ -92,6 +93,18 @@ p {
 #icon {
   height: 1.5rem;
   width: 1.5rem;
+}
+
+input {
+  background-color: #3f86e6;;  
+  border: none;
+  color: #fff;
+  font-family: 'Secular One', sans-serif;
+}
+
+input::placeholder {
+  color: #fff;
+  border: 5px black;
 }
 
 .card {
