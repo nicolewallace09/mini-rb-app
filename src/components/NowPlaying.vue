@@ -70,7 +70,6 @@ export default {
 }
 
 p {
-  line-height: 0.2px;
   font-size: 1rem;
   color: #fff;
 }

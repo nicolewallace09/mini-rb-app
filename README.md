@@ -16,8 +16,6 @@ This application uses Vue CLI and Vue router which will need to be installed. Af
 ## Usage 
 This application will allow users to view the current song in the playlist and the next songs in the queue. Users will also be able to view top artists and search through artists.<br>
 
-*Images and deployment url coming soon*  
-
 ## Contributing 
 Contributors should read the installation section. 
 

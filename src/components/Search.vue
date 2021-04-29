@@ -25,7 +25,7 @@
 
             <b-col cols="3">
               <div class="music-poll">
-                <button v-bind="request" @click="requestArtist(vote.artist_id, $event)" method="post"><img src="https://img.icons8.com/material-two-tone/24/000000/plus--v1.png" class="icon"/></button>
+                <button v-bind="request" @click="requestArtist(request.artist_id, $event)" method="post"><img src="https://img.icons8.com/material-two-tone/24/000000/plus--v1.png" class="icon"/></button>
               </div>
             </b-col>
           </b-row>
@@ -142,7 +142,6 @@ input:focus {
   margin-bottom: 1rem;
   background-color: #3f86e6;
   box-shadow: 5px 5px 2px 1px #184274;  
-  text-overflow: ellipsis;
 }
 
 
