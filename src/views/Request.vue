@@ -1,6 +1,6 @@
 <!-- HTML here -->
 <template>
-  <b-container>
+  <b-container style="background-color: #3f86e6">
     <div class="title">TRENDING ARTISTS</div>
     <TopArtists/>
     <Search/>

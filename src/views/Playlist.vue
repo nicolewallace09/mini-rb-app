@@ -1,6 +1,6 @@
 <!-- HTML here -->
 <template>
-  <b-container>
+  <b-container style="background-color: #3f86e6">
     <NowPlaying/>
     <ComingUp/>
   </b-container>
@@ -22,5 +22,4 @@ export default {
 
 <!-- css here -->
 <style scoped>
-
 </style>

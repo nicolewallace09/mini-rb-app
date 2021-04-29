@@ -1,8 +1,8 @@
 <template>
-  <div id="app" v-bind:style="{ backgroundColor: color}">
+  <div id="app" style="background-color: #3f86e6">
       <Header/> 
       <router-view></router-view>
-      <b-container name="buttons" style="height: 10vh;">
+      <b-container name="buttons" style="height:11vh;">
         <b-row>
           <b-col cols="6">
           <b-button block pill variant="light" class="mb-3"><router-link to="/">Playlist</router-link></b-button>
@@ -23,11 +23,6 @@ export default {
   name: 'App',
   components: {
     Header
-  },
-  data() {
-    return {
-    color: '#3f86e6'
-    }
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <!-- component containing search bar and result cards -->
 <template>
-   <b-container>
+   <b-container style="background-color: #3f86e6">
     <!-- search input that takes in search term passed from getSearchInfo() -->
     <input placeholder="SEARCH FOR ARTISTS..." v-model="search" @input="getSearchInfo" class="mb-1">
 
@@ -200,8 +200,8 @@ button {
   }
 
   .scroll {
-  overflow-y:scroll;
-  height:50vh;
+    overflow-y:scroll;
+    height:50vh;
   }
 }
 </style>
