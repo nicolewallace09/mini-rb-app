@@ -1,4 +1,4 @@
-<!-- HTML here -->
+<!-- page view that contains TopArtists and Search components -->
 <template>
   <b-container style="background-color: #3f86e6">
     <div class="title">TRENDING ARTISTS</div>
@@ -8,7 +8,6 @@
 
 </template>
 
-<!-- props here -->
 <script>
 import TopArtists from '../components/TopArtists'
 import Search from '../components/Search'
