@@ -6,7 +6,7 @@
 
 
     <!-- looping through the search results to display information that user searched --> 
-    <div v-for="search in searchInfo" :key="search.artist_id" class="search-results mt-3">
+    <div v-for="search in searchInfo" :key="search.id" class="search-results mt-3">
       <b-card>
         <b-row>
           <b-col cols="2">

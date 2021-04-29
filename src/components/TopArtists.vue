@@ -2,7 +2,7 @@
 <template>
   <b-container class="container d-flex mt-1">
     <!-- looping through the artist array to display data -->
-    <div v-for="artist in artists" :key="artist.artist_id">
+    <div v-for="artist in artists" :key="artist.id">
       <b-row class="music-row">
         <b-col cols="12">
           <b-card class="music-info">
