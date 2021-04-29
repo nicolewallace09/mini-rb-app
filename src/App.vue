@@ -5,11 +5,11 @@
       <b-container name="buttons" style="height:11vh;">
         <b-row>
           <b-col cols="6">
-          <b-button block pill variant="light" class="mb-3"><router-link to="/">Playlist</router-link></b-button>
+          <router-link to="/" class="nav-link">Playlist</router-link>
           </b-col>
 
           <b-col cols="6">
-          <b-button block pill variant="light" class="mb-3"><router-link to="/request">Request</router-link></b-button>
+          <router-link to="/request" class="nav-link">Request</router-link>
           </b-col>
         </b-row>
       </b-container>
@@ -34,6 +34,23 @@ export default {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.nav-link {
+  text-decoration: none;
+  background-color: #184274;
+  color: #fff;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.nav-link:hover{
+  color: #3f86e6;
+}
+
+.nav-link:active {
+  color: #3f86e6;
+  background-color: #fff;
 }
 
 </style>

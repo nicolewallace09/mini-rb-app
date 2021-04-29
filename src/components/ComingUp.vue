@@ -44,7 +44,7 @@ export default {
   created() {
     this.getComingUp()
     this.voteUp()
-    // update getComingUp every 30 secs
+    // update getComing every 30 secs
     setInterval(() => this.getComingUp(), 30000)
   }, 
   methods: {
@@ -124,7 +124,6 @@ p {
   margin-bottom: 1rem;
   background-color: #3f86e6;
   box-shadow: 5px 5px 2px 1px #184274;  
-  text-overflow: ellipsis;
 }
 
 .music-info {
