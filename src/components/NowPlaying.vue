@@ -13,7 +13,7 @@
               </div>
             </b-col>
 
-            <b-col cols="8">
+            <b-col cols="10">
               <div class="music-info">
                 <p class="song-title font-weight-bold">{{playlist.song}}</p>
                 <p class="song-artist font-style-italic">{{playlist.artist}}</p>
@@ -71,9 +71,17 @@ export default {
   width: 5rem;
 }
 
-p {
-  font-size: 1rem;
+.song-title {
   color: #fff;
+  line-height: 18px;
+  font-size: 18px;
+}
+
+.song-artist {
+  font-style: italic;
+  color: #fff;
+  line-height: 18px;
+  font-size: 18px;
 }
 
 .title {
@@ -111,12 +119,20 @@ p {
     height: 3rem;
     width: 3rem;
     margin-left: -0.5rem;
-    margin-top: 0rem;
+    margin-top: 0.5rem;
   }
 
-  p {
-    line-height: 0.2px;
-    font-size: 0.3rem;
+  .song-title {
+    color: #184274;
+    line-height: 12px;
+    font-size: 12px;
+  }
+
+  .song-artist {
+    font-style: italic;
+    color: #184274;
+    line-height: 10px;
+    font-size: 10px;
   }
 
   #icon {

@@ -13,14 +13,14 @@
             </div>
           </b-col>
 
-          <b-col cols="7">
+          <b-col cols="8">
             <div class="music-info">
               <p class="song-title font-weight-bold">{{music.song}}</p>
-              <p class="song-artist font-style-italic">{{music.artist}}</p>
+              <p class="song-artist">{{music.artist}}</p>
             </div>
           </b-col>
 
-          <b-col cols="3">
+          <b-col cols="2">
             <div class="music-poll">
               <button v-bind="vote" @click="voteUp(vote.pick_id, $event)" method="post"><img src="https://img.icons8.com/cotton/64/000000/facebook-like--v1.png" id="icon"/></button><p class="likes">{{music.likes}}</p>
             </div>
@@ -103,9 +103,17 @@ export default {
   overflow: auto;
 }
 
-p {
-  font-size: 1rem;
+.song-title {
   color: #184274;
+  line-height: 18px;
+  font-size: 18px;
+}
+
+.song-artist {
+  font-style: italic;
+  color: #184274;
+  line-height: 18px;
+  font-size: 18px;
 }
 
 .title {
@@ -135,7 +143,9 @@ p {
 }
 
 .music-poll > .likes {
-  margin-top: -0.5rem;
+  margin-top: -1rem;
+  line-height: 12px;
+  font-size: 12px;
 }
 
 button {
@@ -150,12 +160,20 @@ button {
     height: 3rem;
     width: 3rem;
     margin-left: -0.5rem;
-    margin-top: 0rem;
+    margin-top: 0.5rem;
   }
 
-  p {
-    line-height: 0.2px;
-    font-size: 0.3rem;
+  .song-title {
+    color: #184274;
+    line-height: 12px;
+    font-size: 12px;
+  }
+
+  .song-artist {
+    font-style: italic;
+    color: #184274;
+    line-height: 10px;
+    font-size: 10px;
   }
 
   #icon {
@@ -171,6 +189,12 @@ button {
   .music-poll {
     margin-top: 1rem;
     margin-left: -0.5rem;
+  }
+
+  .music-poll > .likes {
+    margin-top: -0.5rem;
+    font-size: 12px;
+    line-height: 12px;
   }
 }
 </style>
