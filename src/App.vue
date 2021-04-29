@@ -49,7 +49,7 @@ export default {
 }
 
 a.router-link-exact-active {
-  color: #3f86e6;
+  color: #184274;
   background-color: #fff;
 }
 
