@@ -46,7 +46,7 @@ export default {
       request: []
     }
   }, 
-  mounted() {
+  created() {
     this.getSearchInfo()
   }, 
   methods: {

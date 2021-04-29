@@ -36,8 +36,10 @@ export default {
       playlist: []
     }
   }, 
-  mounted() {
+  created() {
     this.getNowPlaying()
+    // update getNowPlaying every 30 secs
+    setInterval(() => this.getNowPlaying(), 30000)
   }, 
   methods: {
     // fetch api data and getting the json response then to add it to the playlist data

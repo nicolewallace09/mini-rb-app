@@ -41,9 +41,11 @@ export default {
       vote: []
     }
   }, 
-  mounted() {
-    this.getComingUp(),
+  created() {
+    this.getComingUp()
     this.voteUp()
+    // update getComingUp every 30 secs
+    setInterval(() => this.getComingUp(), 30000)
   }, 
   methods: {
     // fetch api data then using it to store in our data

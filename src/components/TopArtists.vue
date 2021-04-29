@@ -24,7 +24,7 @@ export default {
       artists: []
     }
   }, 
-  mounted() {
+  created() {
     this.getTopArtists()
   }, 
   methods: {
