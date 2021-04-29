@@ -1,6 +1,6 @@
 <!-- component for displaying the now playing song to be used in the playlist page -->
 <template>
-  <b-container class="mt-2">
+  <b-container>
     <div class="title">NOW PLAYING</div>
 
     <!-- getting information from playlist array from data() -->
