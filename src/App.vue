@@ -2,7 +2,7 @@
   <div id="app" v-bind:style="{ backgroundColor: color}">
       <Header/> 
       <router-view></router-view>
-      <b-container name="buttons">
+      <b-container name="buttons" style="height: 10vh;">
         <b-row>
           <b-col cols="6">
           <b-button block pill variant="light" class="mb-3"><router-link to="/">Playlist</router-link></b-button>

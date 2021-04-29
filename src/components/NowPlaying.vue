@@ -64,7 +64,7 @@ export default {
 .artwork {
   border-radius: 10px;
   margin-left: 5rem;
-  margin-top: 1rem;
+  margin-top: 3rem;
   height: 5rem;
   width: 5rem;
 }

@@ -2,28 +2,36 @@
 <template>
    <b-container>
     <!-- search input that takes in search term passed from getSearchInfo() -->
-    <input placeholder="SEARCH FOR ARTISTS..." v-model="search" @input="getSearchInfo" class="mb-3">
+    <input placeholder="SEARCH FOR ARTISTS..." v-model="search" @input="getSearchInfo" class="mb-1">
 
 
-    <!-- looping through the search results to display information that user searched --> 
-    <div v-for="search in searchInfo" :key="search.id" class="search-results mt-3">
-      <b-card>
-        <b-row>
-          <b-col cols="2">
-            <div class="music-img">
-              <img class="artwork" :src="search.artwork_small">
-            </div>
-          </b-col>
+    <div class="scroll mb-3">
+      <!-- looping through the search results to display information that user searched --> 
+      <div v-for="search in searchInfo" :key="search.id" class="search-results mt-3">
+        <b-card>
+          <b-row>
+            <b-col cols="2">
+              <div class="music-img">
+                <img class="artwork" :src="search.artwork_small">
+              </div>
+            </b-col>
 
-          <b-col cols="8">
-            <div class="music-info">
-              <p class="song-title font-weight-bold">{{search.song}}</p>
-              <p class="song-artist font-style-italic">{{search.artist}}</p>
-            </div>
-          </b-col>
-        </b-row>
-      </b-card>
-    </div> 
+            <b-col cols="7">
+              <div class="music-info">
+                <p class="song-title font-weight-bold">{{search.song}}</p>
+                <p class="song-artist font-style-italic">{{search.artist}}</p>
+              </div>
+            </b-col>
+
+            <b-col cols="3">
+              <div class="music-poll">
+                <button v-bind="request" @click="requestArtist(vote.artist_id, $event)" method="post"><img src="https://img.icons8.com/material-two-tone/24/000000/plus--v1.png" class="icon"/></button>
+              </div>
+            </b-col>
+          </b-row>
+        </b-card>
+      </div> 
+    </div>
   </b-container>
 </template>
 
@@ -34,7 +42,8 @@ export default {
     // setting artists to an empty array and adding the json data from the api
     return {
       searchInfo: [],
-      search: ''
+      search: '',
+      request: []
     }
   }, 
   mounted() {
@@ -55,6 +64,23 @@ export default {
         })
         .then((data) => {
           this.searchInfo = data.response; 
+        })
+    },
+    requestArtist(artist_id) {
+      fetch(`https://api.rockbot.com/v3/engage/request_artist?=${artist_id}`, {
+        method: 'post',
+        headers: {
+         'Accept': 'application/json', 
+         // requires API key for authorization --  create .env to store key 
+        Authorization: process.env.VUE_APP_API_KEY
+        }
+      })
+        .then((response) => {
+          return response.json()
+        })
+        .then((data) => {
+          this.request = data.response; 
+          console.log(this.request)
         })
     }
   }
@@ -119,6 +145,13 @@ input:focus {
   text-overflow: ellipsis;
 }
 
+
+button {
+  background: none;
+  border: none; 
+  margin-top: -5rem;
+}
+
 .music-info {
   margin: 5rem;
 }
@@ -131,6 +164,12 @@ input:focus {
 .search-results {
   overflow: scroll;
 }
+
+.scroll {
+  overflow-y:scroll;
+  height:100vh;
+}
+
 
 /* mobile devices */ 
 @media only screen and (max-width: 770px) {
@@ -159,6 +198,11 @@ input:focus {
   .music-poll {
     margin-top: 1rem;
     margin-left: -0.5rem;
+  }
+
+  .scroll {
+  overflow-y:scroll;
+  height:50vh;
   }
 }
 </style>

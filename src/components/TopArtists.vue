@@ -1,6 +1,6 @@
 <!-- component to display top artisted to be used in the request page -->
 <template>
-  <b-container class="container d-flex mt-1">
+  <b-container class="container d-flex">
     <!-- looping through the artist array to display data -->
     <div v-for="artist in artists" :key="artist.id">
       <b-row class="music-row">

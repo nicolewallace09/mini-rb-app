@@ -22,7 +22,7 @@
 
           <b-col cols="3">
             <div class="music-poll">
-              <button v-bind="vote" @click="voteUp" method="post"><img src="https://img.icons8.com/cotton/64/000000/facebook-like--v1.png" id="icon"/></button><p>{{music.likes}}</p>
+              <button v-bind="vote" @click="voteUp(vote.pick_id, $event)" method="post"><img src="https://img.icons8.com/cotton/64/000000/facebook-like--v1.png" id="icon"/></button><p class="likes">{{music.likes}}</p>
             </div>
           </b-col>
         </b-row>
@@ -60,17 +60,15 @@ export default {
         })
         .then((data) => {
           this.queue = data.response.queue; 
+          console.log(this.queue)
         })
     },
-    voteUp() {
-        fetch('https://api.rockbot.com/v3/engage/vote_up', {'vote': this.vote} , {
+    voteUp(pick_id) {
+        fetch(`https://api.rockbot.com/v3/engage/vote_up?pick_id=${pick_id}`, {
         method: 'post',
-        // body: JSON.stringify({
-        //   pick_id
-        // }),
         headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json',
+        // 'Content-Type': 'application/json',
         // requires API key for authorization --  create .env to store key 
         Authorization: process.env.VUE_APP_API_KEY
         }
@@ -80,9 +78,8 @@ export default {
         })
         .then((data) => {
           this.vote = data.response;
+          console.log(this.vote)
         })
-
-         console.log(this.vote)
     }
   }
 }
@@ -92,7 +89,7 @@ export default {
 .artwork {
   border-radius: 10px;
   margin-left: 5rem;
-  margin-top: 1rem;
+  margin-top: 3rem;
   height: 5rem;
   width: 5rem;
 }
@@ -134,8 +131,17 @@ p {
 }
 
 .music-poll {
-  margin-top: 5rem;
-  margin-left: -1.5rem;
+  margin-top: 5rem; 
+}
+
+.music-poll > .likes {
+  margin-top: -0.5rem;
+}
+
+button {
+  background: none;
+  border: none; 
+  margin-left: -2rem;
 }
 
 /* mobile devices */ 
