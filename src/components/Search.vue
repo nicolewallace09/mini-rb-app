@@ -16,16 +16,15 @@
               </div>
             </b-col>
 
-            <b-col cols="7">
+            <b-col cols="8">
               <div class="music-info">
-                <p class="song-title font-weight-bold">{{search.song}}</p>
-                <p class="song-artist font-style-italic">{{search.artist}}</p>
+                <p class="song-artist">{{search.artist}}</p>
               </div>
             </b-col>
 
-            <b-col cols="3">
+            <b-col cols="2">
               <div class="music-poll">
-                <button v-bind="request" @click="requestArtist(request.artist_id, $event)" method="post"><img src="https://img.icons8.com/material-two-tone/24/000000/plus--v1.png" class="icon"/></button>
+                <button @click="requestArtist(search.artist_id, $event)" method="post"><img src="https://img.icons8.com/material-two-tone/24/000000/plus--v1.png" class="icon"/></button>
               </div>
             </b-col>
           </b-row>
@@ -67,7 +66,7 @@ export default {
         })
     },
     requestArtist(artist_id) {
-      fetch(`https://api.rockbot.com/v3/engage/request_artist?=${artist_id}`, {
+      fetch(`https://api.rockbot.com/v3/engage/request_artist?artist_id=${artist_id}`, {
         method: 'post',
         headers: {
          'Accept': 'application/json', 
@@ -80,7 +79,6 @@ export default {
         })
         .then((data) => {
           this.request = data.response; 
-          console.log(this.request)
         })
     }
   }
@@ -91,7 +89,7 @@ export default {
 .artwork {
   border-radius: 10px;
   margin-left: 5rem;
-  margin-top: 1rem;
+  margin-top: 3rem;
   height: 5rem;
   width: 5rem;
 }
@@ -103,11 +101,13 @@ export default {
   overflow: auto;
 }
 
-p {
-  line-height: 1px;
-  font-size: 1rem;
-  color: #184274
+.song-artist {
+  color: #184274;
+  line-height: 16px;
+  font-size: 16px;
+  font-weight: 500;
 }
+
 
 .title {
   color: #fff; 
@@ -179,9 +179,11 @@ button {
     margin-top: 0rem;
   }
 
-  p {
-    line-height: 0.2px;
-    font-size: 0.3rem;
+  .song-artist {
+    color: #184274;
+    line-height: 10px;
+    font-size: 10px;
+    font-weight: 500;
   }
 
   #icon {

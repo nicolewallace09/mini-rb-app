@@ -72,20 +72,20 @@ export default {
 }
 
 .song-title {
-  color: #fff;
+  color: #ffff;
   line-height: 18px;
   font-size: 18px;
 }
 
 .song-artist {
   font-style: italic;
-  color: #fff;
+  color: #ffff;
   line-height: 18px;
   font-size: 18px;
 }
 
 .title {
-  color: #fff; 
+  color: #ffff; 
   font-weight: 500;
   font-family: 'Secular One', sans-serif;
   font-size: 1.1rem;
@@ -123,14 +123,14 @@ export default {
   }
 
   .song-title {
-    color: #184274;
+    color: #ffff;
     line-height: 12px;
     font-size: 12px;
   }
 
   .song-artist {
     font-style: italic;
-    color: #184274;
+    color: #ffff;
     line-height: 10px;
     font-size: 10px;
   }

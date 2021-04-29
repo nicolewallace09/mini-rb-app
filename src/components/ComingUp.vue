@@ -20,14 +20,15 @@
             </div>
           </b-col>
 
-          <b-col cols="2">
+          <b-col cols="2"> 
             <div class="music-poll">
-              <button v-bind="vote" @click="voteUp(vote.pick_id, $event)" method="post"><img src="https://img.icons8.com/cotton/64/000000/facebook-like--v1.png" id="icon"/></button><p class="likes">{{music.likes}}</p>
+              <button @click="voteUp(music.pick_id, $event)" method="post"><img src="https://img.icons8.com/cotton/64/000000/facebook-like--v1.png" id="icon"/></button><p class="likes">{{music.likes}}</p>
             </div>
-          </b-col>
+          </b-col> 
         </b-row>
       </b-card>
     </div> 
+  
   </b-container>
 </template>
 
@@ -38,7 +39,7 @@ export default {
     // setting queue to an empty array and adding the json data from the api
     return {
       queue: [],
-      vote: []
+      votes: []
     }
   }, 
   created() {
@@ -46,6 +47,7 @@ export default {
     this.voteUp()
     // update getComing every 30 secs
     setInterval(() => this.getComingUp(), 30000)
+    setInterval(() => this.VoteUp(), 1000)
   }, 
   methods: {
     // fetch api data then using it to store in our data
@@ -61,8 +63,7 @@ export default {
           return response.json()
         })
         .then((data) => {
-          this.queue = data.response.queue; 
-          console.log(this.queue)
+          this.queue = data.response.queue;
         })
     },
     voteUp(pick_id) {
@@ -75,13 +76,13 @@ export default {
         Authorization: process.env.VUE_APP_API_KEY
         }
       })
-        .then((response) => {
-          return response.json()
-        })
-        .then((data) => {
-          this.vote = data.response;
-          console.log(this.vote)
-        })
+        // .then((response) => {
+        //   return response.json()
+        // })
+        // .then((data) => {
+        //   this.votes = data.response;
+        //   // console.log(this.vote)
+        // })
     }
   }
 }

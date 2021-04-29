@@ -71,7 +71,7 @@ export default {
 
 .name {
   color: #184274;
-  font-size: 1rem;
+  font-size: 18px;
 }
 
 .card {
@@ -84,15 +84,11 @@ export default {
 /* mobile devices */ 
 @media only screen and (max-width: 600px) {
   .name {
-    font-size: 0.5rem;
-  }
-
-  .title {
-    font-size: 1rem;
+    font-size: 12px;
   }
 
   .card {
-    margin-left: -5rem;
+    margin-left: -3rem;
   }
 
 }
