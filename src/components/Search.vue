@@ -24,7 +24,7 @@
 
             <b-col cols="2">
               <div class="music-poll">
-                <button @click="requestArtist(search.artist_id, $event)" method="post"><img src="https://img.icons8.com/material-two-tone/24/000000/plus--v1.png" class="icon"/></button>
+                <button @click="getSearchInfo(search.artist_id, $event)" method="post"><img src="https://img.icons8.com/material-two-tone/24/000000/plus--v1.png" class="icon"/></button>
               </div>
             </b-col>
           </b-row>
@@ -41,16 +41,24 @@ export default {
     // setting artists to an empty array and adding the json data from the api
     return {
       searchInfo: [],
-      search: '',
-      request: []
+      search: ''
     }
   }, 
   created() {
     this.getSearchInfo()
   }, 
   methods: {
-    // fetch api data and getting the json response to return user's search query
-    getSearchInfo() {
+    // using a post request and passing in artist_id to request artist 
+    getSearchInfo(artist_id) {
+      fetch(`https://api.rockbot.com/v3/engage/request_artist?artist_id=${artist_id}`, {
+        method: 'post',
+        headers: {
+         'Accept': 'application/json', 
+         // requires API key for authorization --  create .env to store key 
+        Authorization: process.env.VUE_APP_API_KEY
+        }
+      })
+      // fetch api data and getting the json response to return user's search query
       fetch(`https://api.rockbot.com/v3/engage/search_artists?query=${this.search}`, {
         method: 'get',
         headers: {
@@ -63,22 +71,6 @@ export default {
         })
         .then((data) => {
           this.searchInfo = data.response; 
-        })
-    },
-    requestArtist(artist_id) {
-      fetch(`https://api.rockbot.com/v3/engage/request_artist?artist_id=${artist_id}`, {
-        method: 'post',
-        headers: {
-         'Accept': 'application/json', 
-         // requires API key for authorization --  create .env to store key 
-        Authorization: process.env.VUE_APP_API_KEY
-        }
-      })
-        .then((response) => {
-          return response.json()
-        })
-        .then((data) => {
-          this.request = data.response; 
         })
     }
   }
@@ -202,8 +194,8 @@ button {
   }
 
   .scroll {
-    overflow-y:scroll;
-    height:50vh;
+    overflow-y: scroll;
+    height: 50vh;
   }
 }
 </style>

@@ -22,7 +22,7 @@
 
           <b-col cols="2"> 
             <div class="music-poll">
-              <button @click="voteUp(music.pick_id, $event)" method="post"><img src="https://img.icons8.com/cotton/64/000000/facebook-like--v1.png" id="icon"/></button><p class="likes">{{music.likes}}</p>
+              <button @click="getComingUp(music.pick_id, $event)" method="post"><img src="https://img.icons8.com/cotton/64/000000/facebook-like--v1.png" id="icon"/></button><p class="likes">{{music.likes}}</p>
             </div>
           </b-col> 
         </b-row>
@@ -38,20 +38,27 @@ export default {
   data() {
     // setting queue to an empty array and adding the json data from the api
     return {
-      queue: [],
-      votes: []
+      queue: []
     }
   }, 
   created() {
     this.getComingUp()
-    this.voteUp()
+    // this.voteUp()
     // update getComing every 30 secs
     setInterval(() => this.getComingUp(), 30000)
-    setInterval(() => this.VoteUp(), 1000)
   }, 
   methods: {
-    // fetch api data then using it to store in our data
-    getComingUp() {
+    // using a post request and passing through pick_id to vote on songs 
+    getComingUp(pick_id) {
+      fetch(`https://api.rockbot.com/v3/engage/vote_up?pick_id=${pick_id}`, {
+        method: 'post',
+        headers: {
+        'Accept': 'application/json',
+        // requires API key for authorization --  create .env to store key 
+        Authorization: process.env.VUE_APP_API_KEY
+        }
+      })
+      // fetch api data then using it to store in our data
       fetch('https://api.rockbot.com/v3/engage/now_playing?queue=1', {
         method: 'get',
         headers: {
@@ -65,24 +72,6 @@ export default {
         .then((data) => {
           this.queue = data.response.queue;
         })
-    },
-    voteUp(pick_id) {
-        fetch(`https://api.rockbot.com/v3/engage/vote_up?pick_id=${pick_id}`, {
-        method: 'post',
-        headers: {
-        'Accept': 'application/json',
-        // 'Content-Type': 'application/json',
-        // requires API key for authorization --  create .env to store key 
-        Authorization: process.env.VUE_APP_API_KEY
-        }
-      })
-        // .then((response) => {
-        //   return response.json()
-        // })
-        // .then((data) => {
-        //   this.votes = data.response;
-        //   // console.log(this.vote)
-        // })
     }
   }
 }
