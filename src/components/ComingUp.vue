@@ -1,35 +1,52 @@
 <!-- component to store the coming up queue to be used in the playlist page -->
 <template>
-  <b-container class="mb-2">
-    <div class="title">UP NEXT:</div>
-
+  <v-container>
+    <div class="title mb-2">COMING UP</div>
     <!-- looping through the queue array to display information --> 
-    <div v-for="music in queue" :key="music.id">
-      <b-card>
-        <b-row>
-          <b-col cols="2">
-            <div class="music-img">
-              <img class="artwork" :src="music.artwork_small">
-            </div>
-          </b-col>
+    <v-card
+      max-width="600"
+      class="mx-auto mt-3"
+      v-for="music in queue" :key="music.id"
+      color="#fff"
+    >
+    <v-row>
+      <v-col lg="12" m="12" s="12" xs="12">
+        <div class="d-flex flex-no-wrap justify-space-between">
+          <div>
+            <v-card-title
+              class="text-h5"
+              v-text="music.song"
+            ></v-card-title>
 
-          <b-col cols="8">
-            <div class="music-info">
-              <p class="song-title font-weight-bold">{{music.song}}</p>
-              <p class="song-artist">{{music.artist}}</p>
-            </div>
-          </b-col>
+            <v-card-subtitle v-text="music.artist"></v-card-subtitle>
 
-          <b-col cols="2"> 
-            <div class="music-poll">
-              <button @click="getComingUp(music.pick_id, $event)" method="post"><img src="https://img.icons8.com/cotton/64/000000/facebook-like--v1.png" id="icon"/></button><p class="likes">{{music.likes}}</p>
-            </div>
-          </b-col> 
-        </b-row>
-      </b-card>
-    </div> 
-  
-  </b-container>
+            <v-card-actions>
+              <v-btn
+                class="ml-2 mt-3"
+                fab
+                icon
+                height="40px"
+                right
+                width="40px"
+              >
+                <!-- <v-icon>mdi-play</v-icon> -->
+                X
+              </v-btn>
+            </v-card-actions>
+          </div>
+
+          <v-avatar
+            class="ma-3"
+            size="125"
+            tile
+          >
+            <v-img :src="music.artwork_small"></v-img>
+          </v-avatar>
+        </div>
+      </v-col>
+    </v-row>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -37,6 +54,11 @@ export default {
   name: 'ComingUp',
   data() {
     // setting queue to an empty array and adding the json data from the api
+      // <v-col cols="2"> 
+    //       <div class="music-poll">
+    //         <button @click="getComingUp(music.pick_id, $event)" method="post"><img src="https://img.icons8.com/cotton/64/000000/facebook-like--v1.png" id="icon"/></button><p class="likes">{{music.likes}}</p>
+    //       </div>
+    //     </v-col> 
     return {
       queue: []
     }
@@ -78,113 +100,7 @@ export default {
 </script>
 
 <style scoped>
-.artwork {
-  border-radius: 10px;
-  margin-left: 5rem;
-  margin-top: 3rem;
-  height: 5rem;
-  width: 5rem;
-}
-
-.container {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  overflow: auto;
-}
-
-.song-title {
-  color: #184274;
-  line-height: 18px;
-  font-size: 18px;
-}
-
-.song-artist {
-  font-style: italic;
-  color: #184274;
-  line-height: 18px;
-  font-size: 18px;
-}
-
-.title {
-  color: #184274; 
-  font-weight: 500;
-  font-family: 'Secular One', sans-serif;
-  font-size: 1.1rem;
-}
-
-#icon {
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
-.card {
-  margin-bottom: 1rem;
-  background-color: #3f86e6;
-  box-shadow: 5px 5px 2px 1px #184274;  
-}
-
-.music-info {
-  margin: 5rem;
-}
-
-.music-poll {
-  margin-top: 5rem; 
-}
-
-.music-poll > .likes {
-  margin-top: -1rem;
-  line-height: 12px;
-  font-size: 12px;
-}
-
-button {
-  background: none;
-  border: none; 
-  margin-left: -2rem;
-}
-
-/* mobile devices */ 
-@media only screen and (max-width: 770px) {
-  .artwork {
-    height: 3rem;
-    width: 3rem;
-    margin-left: -0.5rem;
-    margin-top: 0.5rem;
-  }
-
-  .song-title {
-    color: #184274;
-    line-height: 12px;
-    font-size: 12px;
-  }
-
-  .song-artist {
-    font-style: italic;
-    color: #184274;
-    line-height: 10px;
-    font-size: 10px;
-  }
-
-  #icon {
-    height: 0.9rem;
-    width: 0.9rem;
-  }
-
-  .music-info {
-    margin: 1rem;
-    /* margin-left: 1rem; */
-  }
-
-  .music-poll {
-    margin-top: 1rem;
-    margin-left: -0.5rem;
-  }
-
-  .music-poll > .likes {
-    margin-top: -0.5rem;
-    font-size: 12px;
-    line-height: 12px;
-  }
+.v-avatar {
+  align-items: flex-end;
 }
 </style>

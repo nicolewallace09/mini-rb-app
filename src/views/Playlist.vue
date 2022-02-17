@@ -1,9 +1,15 @@
 <!-- page view that contains NowPlaying and ComingUp components -->
 <template>
-  <b-container style="background-color: #fff">
-    <NowPlaying/>
-    <ComingUp/>
-  </b-container>
+  <v-container fluid>
+    <v-row>
+      <v-col lg="6" m="6" s="6" xs="12">
+        <NowPlaying/>
+      </v-col>
+      <v-col lg="6" m="6" s="6" xs="12">
+        <ComingUp/>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>

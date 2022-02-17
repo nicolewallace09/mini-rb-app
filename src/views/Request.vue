@@ -1,10 +1,10 @@
 <!-- page view that contains TopArtists and Search components -->
 <template>
-  <b-container style="background-color: #fff">
+  <v-container>
     <div class="title">TRENDING ARTISTS</div>
     <TopArtists/>
     <Search/>
-  </b-container>
+  </v-container>
 
 </template>
 
