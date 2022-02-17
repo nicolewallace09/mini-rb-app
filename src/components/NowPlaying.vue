@@ -48,7 +48,7 @@ export default {
         method: 'get',
         headers: {
         // requires API key for authorization --  create .env to store key 
-        Authorization: process.env.VUE_APP_API_KEY
+        Authorization: '2ab742c917f872aa88644bc8f995e03159b2'
         }
       })
         .then((response) => {
@@ -85,7 +85,7 @@ export default {
 }
 
 .title {
-  color: #ffff; 
+  color: #184274; 
   font-weight: 500;
   font-family: 'Secular One', sans-serif;
   font-size: 1.1rem;

@@ -78,7 +78,7 @@ export default {
   border: none;
   width: 15rem; 
   height: 12rem;
-  background-color: #3f86e6;
+  background-color: #fff;
 }
 
 /* mobile devices */ 

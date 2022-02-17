@@ -1,5 +1,5 @@
 <template>
-  <div id="app" style="background-color: #3f86e6">
+  <div id="app" style="background-color: #fff">
       <Header/> 
       <router-view></router-view>
       <b-container name="buttons" style="height:11vh;">
@@ -29,6 +29,7 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&family=Paytone+One&family=Russo+One&family=Secular+One&display=swap');
+@import '~vuetify/src/stylus/main';
 
 .buttons {
   display: block;
@@ -45,12 +46,12 @@ export default {
 }
 
 .nav-link:hover{
-  color: #3f86e6;
+  color: #fff;
 }
 
 a.router-link-exact-active {
   color: #184274;
-  background-color: #fff;
+  background-color: #3f86e6;
 }
 
 </style>

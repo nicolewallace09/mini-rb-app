@@ -45,7 +45,7 @@ export default {
     this.getComingUp()
     // this.voteUp()
     // update getComing every 30 secs
-    setInterval(() => this.getComingUp(), 30000)
+    setInterval(() => this.getComingUp(), 1000)
   }, 
   methods: {
     // using a post request and passing through pick_id to vote on songs 
@@ -107,7 +107,7 @@ export default {
 }
 
 .title {
-  color: #fff; 
+  color: #184274; 
   font-weight: 500;
   font-family: 'Secular One', sans-serif;
   font-size: 1.1rem;

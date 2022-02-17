@@ -1,6 +1,6 @@
 <!-- page view that contains TopArtists and Search components -->
 <template>
-  <b-container style="background-color: #3f86e6">
+  <b-container style="background-color: #fff">
     <div class="title">TRENDING ARTISTS</div>
     <TopArtists/>
     <Search/>
@@ -23,7 +23,7 @@ export default {
 
 <style scoped>
 .title {
-  color: #fff; 
+  color: #184274; 
   font-weight: 500;
   font-family: 'Secular One', sans-serif;
   font-size: 1.1rem;

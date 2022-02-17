@@ -1,6 +1,6 @@
 <!-- page view that contains NowPlaying and ComingUp components -->
 <template>
-  <b-container style="background-color: #3f86e6">
+  <b-container style="background-color: #fff">
     <NowPlaying/>
     <ComingUp/>
   </b-container>

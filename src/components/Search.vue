@@ -1,6 +1,6 @@
 <!-- component containing search bar and result cards -->
 <template>
-   <b-container style="background-color: #3f86e6">
+   <b-container style="background-color: #fff">
     <!-- search input that takes in search term passed from getSearchInfo() -->
     <input placeholder="SEARCH FOR ARTISTS..." v-model="search" @input="getSearchInfo" class="mb-1">
 
@@ -102,7 +102,7 @@ export default {
 
 
 .title {
-  color: #fff; 
+  color: #184274; 
   font-weight: 500;
   font-family: 'Secular One', sans-serif;
   font-size: 1.1rem;
@@ -114,15 +114,15 @@ export default {
 }
 
 input {
-  background-color: #3f86e6;;  
+  background-color: #fff;  
   border: none;
-  color: #fff;
+  color: #184274;
   font-family: 'Secular One', sans-serif;
   width: 100%;
 }
 
 input::placeholder {
-  color: #fff;
+  color: #184274;
   border: 5px black;
 }
 
