@@ -1,7 +1,7 @@
 <!-- header component to be used in the main app -->
 <template>
     <v-app-bar
-        color="#3f86e6"
+        color="rgb(42, 53, 66)"
         dense
         height="80"
       >

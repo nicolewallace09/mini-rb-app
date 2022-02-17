@@ -20,6 +20,10 @@ export default {
 </script>
 
 <style>
+#app {
+  background: rgb(42, 53, 66); 
+  font-family: 'Roboto', sans-serif;
+}
 </style>
 
 

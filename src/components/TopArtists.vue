@@ -78,7 +78,6 @@ export default {
   border: none;
   width: 15rem; 
   height: 12rem;
-  background-color: #fff;
 }
 
 /* mobile devices */ 

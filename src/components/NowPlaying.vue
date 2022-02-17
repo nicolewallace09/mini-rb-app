@@ -1,7 +1,7 @@
 <!-- component for displaying the now playing song to be used in the playlist page -->
 <template>
   <v-container>
-    <div class="title">NOW PLAYING</div>
+    <div class="title mb-2">NOW PLAYING</div>
     <!-- getting information from playlist array from data() -->
   
     <v-card
@@ -12,7 +12,7 @@
       <v-img
         :src="playlist.artwork_large"
         class="white--text align-end"
-        gradient="to bottom, transparent, #184274"
+        gradient="to bottom, transparent, #3f86e6"
         height="500px"
       >
         <v-card-title>{{playlist.song}}</v-card-title>
@@ -61,6 +61,11 @@ export default {
 </script>
 
 <style scoped>
+.title {
+  color: #fff; 
+  font-weight: 700;
+}
+
 .v-card__title, .v-card__subtitle {
   color: #fff;
 }

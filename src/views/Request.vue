@@ -23,10 +23,8 @@ export default {
 
 <style scoped>
 .title {
-  color: #184274; 
-  font-weight: 500;
-  font-family: 'Secular One', sans-serif;
-  font-size: 1.1rem;
+  color: #fff; 
+  font-weight: 700;
 }
 
 </style>
