@@ -1,10 +1,10 @@
 <!-- page view that contains TopArtists and Search components -->
 <template>
-  <b-container style="background-color: #fff">
+  <v-container>
     <div class="title">TRENDING ARTISTS</div>
     <TopArtists/>
     <Search/>
-  </b-container>
+  </v-container>
 
 </template>
 
@@ -23,10 +23,7 @@ export default {
 
 <style scoped>
 .title {
-  color: #184274; 
-  font-weight: 500;
-  font-family: 'Secular One', sans-serif;
-  font-size: 1.1rem;
+  color: #fff; 
+  font-weight: 700;
 }
-
 </style>

@@ -1,63 +1,92 @@
 <!-- component to store the coming up queue to be used in the playlist page -->
 <template>
-  <b-container class="mb-2">
-    <div class="title">UP NEXT:</div>
-
+  <v-container>
+    <div class="title">COMING UP</div>
     <!-- looping through the queue array to display information --> 
-    <div v-for="music in queue" :key="music.id">
-      <b-card>
-        <b-row>
-          <b-col cols="2">
-            <div class="music-img">
-              <img class="artwork" :src="music.artwork_small">
-            </div>
-          </b-col>
+    <!-- <v-container class="comingUp-container"> -->
+    <v-card
+      max-width="100%"
+      class="mx-auto mt-3"
+      v-for="music in queue" :key="music.id"
+      color="rgba(42, 53, 66, 0.608)"
+    >
 
-          <b-col cols="8">
-            <div class="music-info">
-              <p class="song-title font-weight-bold">{{music.song}}</p>
-              <p class="song-artist">{{music.artist}}</p>
-            </div>
-          </b-col>
+    <v-row dense>
+      <v-col cols="12">
+       
+        <div class="d-flex flex-no-wrap justify-space-between">
+          <div>
+            <v-card-title
+              class="text-h5 ml-3"
+              v-text="music.song"
+            ></v-card-title>
 
-          <b-col cols="2"> 
-            <div class="music-poll">
-              <button @click="getComingUp(music.pick_id, $event)" method="post"><img src="https://img.icons8.com/cotton/64/000000/facebook-like--v1.png" id="icon"/></button><p class="likes">{{music.likes}}</p>
-            </div>
-          </b-col> 
-        </b-row>
-      </b-card>
-    </div> 
-  
-  </b-container>
+            <v-card-subtitle 
+              class="ml-3"
+              v-text="music.artist"
+            ></v-card-subtitle>
+
+            <v-card-actions>
+              <v-btn
+                class="mr-1 ml-3"
+                text
+                icon
+                outlined
+              >
+                <vue-star animate="animated rubberBand" color="#fff">
+                  <a slot="icon" class="fa fa-thumbs-up" @click="voteUp(music.pick_id, $event)" method="post" ></a>
+                </vue-star>
+              </v-btn>
+              <span class="ml-1">{{music.likes}}</span>
+
+              <v-btn
+                class="mr-1 ml-4"
+                text
+                icon
+                outlined
+              >
+                <vue-star animate="animated rubberBand">
+                  <a slot="icon" class="fa fa-thumbs-down" @click="voteDown(music.pick_id, $event)" method="post" ></a>
+                </vue-star>
+              </v-btn>
+              <span class="ml-1">{{music.dislikes}}</span>
+            </v-card-actions>
+          </div>
+
+          <v-avatar
+            class="ma-3"
+            size="125"
+            tile
+          >
+            <v-img :src="music.artwork_small"></v-img>
+          </v-avatar>
+        </div>
+        
+      </v-col>
+    </v-row>
+    </v-card> 
+    <!-- </v-container> -->
+  </v-container>
 </template>
 
 <script>
+import VueStar from 'vue-star'
+
 export default {
   name: 'ComingUp',
+  components: {
+    VueStar
+  },
   data() {
-    // setting queue to an empty array and adding the json data from the api
     return {
       queue: []
     }
   }, 
   created() {
     this.getComingUp()
-    // this.voteUp()
-    // update getComing every 30 secs
-    setInterval(() => this.getComingUp(), 1000)
   }, 
   methods: {
-    // using a post request and passing through pick_id to vote on songs 
-    getComingUp(pick_id) {
-      fetch(`https://api.rockbot.com/v3/engage/vote_up?pick_id=${pick_id}`, {
-        method: 'post',
-        headers: {
-        'Accept': 'application/json',
-        // requires API key for authorization --  create .env to store key 
-        Authorization: process.env.VUE_APP_API_KEY
-        }
-      })
+    getComingUp() {
       // fetch api data then using it to store in our data
       fetch('https://api.rockbot.com/v3/engage/now_playing?queue=1', {
         method: 'get',
@@ -72,119 +101,77 @@ export default {
         .then((data) => {
           this.queue = data.response.queue;
         })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    // using a post request and passing through pick_id to vote on songs 
+    voteUp(pick_id) {
+        fetch(`https://api.rockbot.com/v3/engage/vote_up?pick_id=${pick_id}`, {
+        method: 'post',
+        headers: {
+        'Accept': 'application/json',
+        // requires API key for authorization --  create .env to store key 
+        Authorization: process.env.VUE_APP_API_KEY
+        }
+      })
+        .then(() => {
+          this.getComingUp();
+        })
+    },
+    // using a post request and passing through pick_id to vote down songs 
+    voteDown(pick_id) {
+        fetch(`https://api.rockbot.com/v3/engage/vote_down?pick_id=${pick_id}`, {
+        method: 'post',
+        headers: {
+        'Accept': 'application/json',
+        // requires API key for authorization --  create .env to store key 
+        Authorization: process.env.VUE_APP_API_KEY
+        }
+      })
+        .then(() => {
+          this.getComingUp();
+        })
     }
   }
 }
 </script>
 
 <style scoped>
-.artwork {
-  border-radius: 10px;
-  margin-left: 5rem;
-  margin-top: 3rem;
-  height: 5rem;
-  width: 5rem;
-}
-
-.container {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  overflow: auto;
-}
-
-.song-title {
-  color: #184274;
-  line-height: 18px;
-  font-size: 18px;
-}
-
-.song-artist {
-  font-style: italic;
-  color: #184274;
-  line-height: 18px;
-  font-size: 18px;
-}
+/* .comingUp-container {
+  height: 500px;
+  overflow-x: auto;
+} */
 
 .title {
-  color: #184274; 
-  font-weight: 500;
-  font-family: 'Secular One', sans-serif;
-  font-size: 1.1rem;
+  color: #fff; 
+  font-weight: 700;
 }
 
-#icon {
-  height: 1.5rem;
-  width: 1.5rem;
+.v-avatar {
+  position: absolute;
+  bottom: 10px;
+  right: 50px;
 }
 
-.card {
-  margin-bottom: 1rem;
-  background-color: #3f86e6;
-  box-shadow: 5px 5px 2px 1px #184274;  
+.v-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-.music-info {
-  margin: 5rem;
+.v-card__title, .v-card__subtitle, span {
+  color: #fff; 
 }
 
-.music-poll {
-  margin-top: 5rem; 
+.theme--light.v-btn.v-btn--outlined.v-btn--text {
+  border: 1px solid #fff;
 }
 
-.music-poll > .likes {
-  margin-top: -1rem;
-  line-height: 12px;
-  font-size: 12px;
+a {
+  color: white;
+}
+a:hover {
+  color: #3f86e6;
+  text-decoration: none;
 }
 
-button {
-  background: none;
-  border: none; 
-  margin-left: -2rem;
-}
-
-/* mobile devices */ 
-@media only screen and (max-width: 770px) {
-  .artwork {
-    height: 3rem;
-    width: 3rem;
-    margin-left: -0.5rem;
-    margin-top: 0.5rem;
-  }
-
-  .song-title {
-    color: #184274;
-    line-height: 12px;
-    font-size: 12px;
-  }
-
-  .song-artist {
-    font-style: italic;
-    color: #184274;
-    line-height: 10px;
-    font-size: 10px;
-  }
-
-  #icon {
-    height: 0.9rem;
-    width: 0.9rem;
-  }
-
-  .music-info {
-    margin: 1rem;
-    /* margin-left: 1rem; */
-  }
-
-  .music-poll {
-    margin-top: 1rem;
-    margin-left: -0.5rem;
-  }
-
-  .music-poll > .likes {
-    margin-top: -0.5rem;
-    font-size: 12px;
-    line-height: 12px;
-  }
-}
 </style>

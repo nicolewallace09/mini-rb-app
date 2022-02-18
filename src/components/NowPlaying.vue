@@ -1,31 +1,35 @@
 <!-- component for displaying the now playing song to be used in the playlist page -->
 <template>
-  <b-container>
-    <div class="title">NOW PLAYING</div>
-
+  <v-container>
+    <div class="title mb-2">NOW PLAYING</div>
     <!-- getting information from playlist array from data() -->
-     <div v-bind="playlist">
-        <b-card>
-          <b-row>
-            <b-col cols="2">
-              <div class="music-img">
-                <img class="artwork" :src="playlist.artwork_small">
-              </div>
-            </b-col>
-
-            <b-col cols="10">
-              <div class="music-info">
-                <p class="song-title font-weight-bold">{{playlist.song}}</p>
-                <p class="song-artist font-style-italic">{{playlist.artist}}</p>
-              </div>
-            </b-col>
-
-          </b-row>
-        </b-card>
-      </div>
-
-  </b-container>
+    <v-row>
+      <v-col
+          cols="12"
+          v-bind="playlist"
+      >
+        <v-card
+          class="mx-auto"
+          max-width="100%"
+          color="rgba(42, 53, 66, 0.608)"
+        >
+          <v-img
+            :src="playlist.artwork_large"
+            gradient="to bottom, transparent, #3f86e6"
+            height="500px"
+          >
+          <v-card-title>{{playlist.song}}</v-card-title>
+          <v-card-subtitle>{{playlist.artist}}</v-card-subtitle>
+          </v-img>
+        
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
+
+
+  
 
 <script>
 export default {
@@ -48,7 +52,7 @@ export default {
         method: 'get',
         headers: {
         // requires API key for authorization --  create .env to store key 
-        Authorization: '2ab742c917f872aa88644bc8f995e03159b2'
+        Authorization: process.env.VUE_APP_API_KEY
         }
       })
         .then((response) => {
@@ -57,97 +61,31 @@ export default {
         .then((data) => {
           this.playlist = data.response.now_playing; 
         })
+        .catch((error) => {
+          console.log(error)
+        })
     }
   }
 }
 </script>
 
 <style scoped>
-.artwork {
-  border-radius: 10px;
-  margin-left: 5rem;
-  margin-top: 3rem;
-  height: 5rem;
-  width: 5rem;
-}
-
-.song-title {
-  color: #ffff;
-  line-height: 18px;
-  font-size: 18px;
-}
-
-.song-artist {
-  font-style: italic;
-  color: #ffff;
-  line-height: 18px;
-  font-size: 18px;
-}
-
 .title {
-  color: #184274; 
-  font-weight: 500;
-  font-family: 'Secular One', sans-serif;
-  font-size: 1.1rem;
+  color: #fff; 
+  font-weight: 700;
 }
 
-#icon {
-  height: 1.5rem;
-  width: 1.5rem;
+.v-card__title {
+  color: #fff;
+  position: absolute;
+  bottom: 30px;
+  left: 15px;
 }
 
-.card {
-  margin-bottom: 1rem;
-  background-color: #3f86e6;
-  box-shadow: 5px 5px 2px 1px #184274;
-  text-overflow: ellipsis;
-}
-
-.music-info {
-  margin: 5rem;
- 
-}
-
-.music-poll {
-  margin-top: 5rem;
-  margin-left: -1.5rem;
-}
-
-/* mobile devices */ 
-@media only screen and (max-width: 770px) {
-  .artwork {
-    height: 3rem;
-    width: 3rem;
-    margin-left: -0.5rem;
-    margin-top: 0.5rem;
-  }
-
-  .song-title {
-    color: #ffff;
-    line-height: 12px;
-    font-size: 12px;
-  }
-
-  .song-artist {
-    font-style: italic;
-    color: #ffff;
-    line-height: 10px;
-    font-size: 10px;
-  }
-
-  #icon {
-    height: 0.9rem;
-    width: 0.9rem;
-  }
-
-  .music-info {
-    margin: 1rem;
-    /* margin-left: 1rem; */
-  }
-
-  .music-poll {
-    margin-top: 1rem;
-    margin-left: -0.5rem;
-  }
+.v-card__subtitle{
+  color: #fff;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
 }
 </style>

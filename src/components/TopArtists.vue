@@ -1,18 +1,21 @@
 <!-- component to display top artisted to be used in the request page -->
 <template>
-  <b-container class="container d-flex">
-    <!-- looping through the artist array to display data -->
-    <div v-for="artist in artists" :key="artist.id">
-      <b-row class="music-row">
-        <b-col cols="12">
-          <b-card class="music-info">
-            <img class="artwork center" :src="artist.artwork_small">
-            <p class="name text-center mt-2">{{artist.artist}}</p>
-          </b-card>
-        </b-col>
-      </b-row>
-    </div>    
-  </b-container>
+  <v-container class="container">
+    <v-card
+      width="400px"
+      height="300px"
+      v-for="artist in artists" :key="artist.id"
+      color="rgba(42, 53, 66, 0.608)"
+    >
+    <v-img
+      height="200px"
+      width="200px"
+      :src="artist.artwork_small"
+    >
+    </v-img>
+    <span>{{artist.artist}}</span>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -43,54 +46,37 @@ export default {
         .then((data) => {
           this.artists = data.response; 
         })
+        .catch((error) => {
+          console.log(error)
+        })
     }
   }
 }
 </script>
 
 <style scoped>
-.artwork {
-  border-radius: 50%;
-  max-width: 40%;
-  height: auto;
-}
-
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  /* width: 50%; */
-}
-
 .container {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
   overflow-x: auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.name {
-  color: #184274;
-  font-size: 18px;
+.v-card {
+  padding: 20px;
+  margin: 10px;
 }
 
-.card {
-  border: none;
-  width: 15rem; 
-  height: 12rem;
-  background-color: #fff;
+.v-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-/* mobile devices */ 
-@media only screen and (max-width: 600px) {
-  .name {
-    font-size: 12px;
-  }
-
-  .card {
-    margin-left: -3rem;
-  }
-
+span {
+  color: #fff;
+  font-weight: 500;
 }
 
 </style>
