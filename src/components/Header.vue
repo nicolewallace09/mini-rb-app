@@ -5,12 +5,9 @@
         dense
         height="80"
       >
-        <v-toolbar-title><img src="../../src/assets/logo.png" class="center d-inline-block align-self-center" alt="rockbot-logo"></v-toolbar-title>
+        <v-toolbar-title><a href="/"><img src="../../src/assets/logo.png" class="center d-inline-block align-self-center" alt="rockbot-logo"></a></v-toolbar-title>
     </v-app-bar>
 </template>
-
-
-
 
 <script>
 export default {

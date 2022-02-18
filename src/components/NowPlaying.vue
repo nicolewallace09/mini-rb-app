@@ -3,22 +3,28 @@
   <v-container>
     <div class="title mb-2">NOW PLAYING</div>
     <!-- getting information from playlist array from data() -->
-  
-    <v-card
-      class="mx-auto"
-      max-width="100%"
-      v-bind="playlist"
-    >
-      <v-img
-        :src="playlist.artwork_large"
-        class="white--text align-end"
-        gradient="to bottom, transparent, #3f86e6"
-        height="500px"
+    <v-row>
+      <v-col
+          cols="12"
+          v-bind="playlist"
       >
-        <v-card-title>{{playlist.song}}</v-card-title>
-        <v-card-subtitle>{{playlist.artist}}</v-card-subtitle>
-      </v-img>
-    </v-card>
+        <v-card
+          class="mx-auto"
+          max-width="100%"
+          color="rgba(42, 53, 66, 0.608)"
+        >
+          <v-img
+            :src="playlist.artwork_large"
+            gradient="to bottom, transparent, #3f86e6"
+            height="500px"
+          >
+          <v-card-title>{{playlist.song}}</v-card-title>
+          <v-card-subtitle>{{playlist.artist}}</v-card-subtitle>
+          </v-img>
+        
+        </v-card>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -46,7 +52,7 @@ export default {
         method: 'get',
         headers: {
         // requires API key for authorization --  create .env to store key 
-        Authorization: '2ab742c917f872aa88644bc8f995e03159b2'
+        Authorization: process.env.VUE_APP_API_KEY
         }
       })
         .then((response) => {
@@ -54,6 +60,9 @@ export default {
         })
         .then((data) => {
           this.playlist = data.response.now_playing; 
+        })
+        .catch((error) => {
+          console.log(error)
         })
     }
   }
@@ -66,7 +75,17 @@ export default {
   font-weight: 700;
 }
 
-.v-card__title, .v-card__subtitle {
+.v-card__title {
   color: #fff;
+  position: absolute;
+  bottom: 30px;
+  left: 15px;
+}
+
+.v-card__subtitle{
+  color: #fff;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
 }
 </style>

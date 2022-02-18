@@ -22,7 +22,7 @@ export default {
 <style>
 #app {
   background: rgb(42, 53, 66); 
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sa;
 }
 </style>
 

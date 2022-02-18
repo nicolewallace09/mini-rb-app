@@ -1,49 +1,55 @@
 <!-- component to store the coming up queue to be used in the playlist page -->
 <template>
   <v-container>
-    <div class="title mb-2">COMING UP</div>
+    <div class="title">COMING UP</div>
     <!-- looping through the queue array to display information --> 
+    <!-- <v-container class="comingUp-container"> -->
     <v-card
-      width="600"
+      max-width="100%"
       class="mx-auto mt-3"
       v-for="music in queue" :key="music.id"
       color="rgba(42, 53, 66, 0.608)"
     >
-    <v-row>
-      <v-col lg="12" m="12" s="12" xs="12">
+
+    <v-row dense>
+      <v-col cols="12">
+       
         <div class="d-flex flex-no-wrap justify-space-between">
           <div>
             <v-card-title
-              class="text-h5"
+              class="text-h5 ml-3"
               v-text="music.song"
             ></v-card-title>
 
-            <v-card-subtitle v-text="music.artist"></v-card-subtitle>
+            <v-card-subtitle 
+              class="ml-3"
+              v-text="music.artist"
+            ></v-card-subtitle>
 
             <v-card-actions>
               <v-btn
-                class="ma-2"
+                class="mr-1 ml-3"
                 text
                 icon
+                outlined
               >
                 <vue-star animate="animated rubberBand" color="#fff">
                   <a slot="icon" class="fa fa-thumbs-up" @click="voteUp(music.pick_id, $event)" method="post" ></a>
                 </vue-star>
               </v-btn>
-              <span>{{music.likes}}</span>
+              <span class="ml-1">{{music.likes}}</span>
+
               <v-btn
-                class="ma-2"
+                class="mr-1 ml-4"
                 text
                 icon
+                outlined
               >
-                <vue-star animate="animated rubberBand" color="#fff">
+                <vue-star animate="animated rubberBand">
                   <a slot="icon" class="fa fa-thumbs-down" @click="voteDown(music.pick_id, $event)" method="post" ></a>
                 </vue-star>
-                <!-- <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M23,10C23,8.89 22.1,8 21,8H14.68L15.64,3.43C15.66,3.33 15.67,3.22 15.67,3.11C15.67,2.7 15.5,2.32 15.23,2.05L14.17,1L7.59,7.58C7.22,7.95 7,8.45 7,9V19A2,2 0 0,0 9,21H18C18.83,21 19.54,20.5 19.84,19.78L22.86,12.73C22.95,12.5 23,12.26 23,12V10M1,21H5V9H1V21Z" />
-                </svg> -->
               </v-btn>
-              <span>{{music.dislikes}}</span>
+              <span class="ml-1">{{music.dislikes}}</span>
             </v-card-actions>
           </div>
 
@@ -55,9 +61,11 @@
             <v-img :src="music.artwork_small"></v-img>
           </v-avatar>
         </div>
+        
       </v-col>
     </v-row>
-    </v-card>
+    </v-card> 
+    <!-- </v-container> -->
   </v-container>
 </template>
 
@@ -76,9 +84,6 @@ export default {
   }, 
   created() {
     this.getComingUp()
-    // this.voteUp()
-    // update getComing every 30 secs
-    setInterval(() => this.getComingUp(), 1000)
   }, 
   methods: {
     getComingUp() {
@@ -96,6 +101,9 @@ export default {
         .then((data) => {
           this.queue = data.response.queue;
         })
+        .catch((error) => {
+          console.log(error)
+        })
     },
     // using a post request and passing through pick_id to vote on songs 
     voteUp(pick_id) {
@@ -107,6 +115,9 @@ export default {
         Authorization: process.env.VUE_APP_API_KEY
         }
       })
+        .then(() => {
+          this.getComingUp();
+        })
     },
     // using a post request and passing through pick_id to vote down songs 
     voteDown(pick_id) {
@@ -118,22 +129,49 @@ export default {
         Authorization: process.env.VUE_APP_API_KEY
         }
       })
+        .then(() => {
+          this.getComingUp();
+        })
     }
   }
 }
 </script>
 
 <style scoped>
+/* .comingUp-container {
+  height: 500px;
+  overflow-x: auto;
+} */
+
 .title {
   color: #fff; 
   font-weight: 700;
 }
 
 .v-avatar {
-  align-items: flex-end;
+  position: absolute;
+  bottom: 10px;
+  right: 50px;
 }
 
-.v-card__title, .v-card__subtitle {
+.v-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.v-card__title, .v-card__subtitle, span {
   color: #fff; 
 }
+
+.theme--light.v-btn.v-btn--outlined.v-btn--text {
+  border: 1px solid #fff;
+}
+
+a {
+  color: white;
+}
+a:hover {
+  color: #3f86e6;
+  text-decoration: none;
+}
+
 </style>

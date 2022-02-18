@@ -7,14 +7,18 @@
         x-large
         class="mx-2"
         color="#3f86e6"
-        ><router-link to="/" class="nav-link">Playlist</router-link></v-btn>
+        >
+            <router-link to="/" class="nav-link">Playlist</router-link>
+        </v-btn>
         <v-btn
         elevation="2"
         rounded
         x-large
         class="mx-2"
         color="#184274"
-        ><router-link to="/request" class="nav-link">Request</router-link></v-btn>
+        >
+            <router-link to="/request" class="nav-link">Request</router-link>
+        </v-btn>
     </v-footer>
 </template>
 
