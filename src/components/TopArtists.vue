@@ -2,18 +2,17 @@
 <template>
   <v-container fluid class="container">
     <v-card
-      width="400px"
-      height="300px"
+      height="250px"
       v-for="artist in artists" :key="artist.id"
       color="rgba(42, 53, 66, 0.608)"
     >
     <v-img
-      height="200px"
-      width="200px"
+      height="150px"
+      width="150px"
       :src="artist.artwork_small"
     >
     </v-img>
-    <span>{{artist.artist}}</span>
+    <span><div class="artist_name">{{artist.artist}}</div></span>
     </v-card>
   </v-container>
 </template>
@@ -51,26 +50,30 @@ export default {
 </script>
 
 <style scoped>
-/* .container {
+.container {
   display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row; 
-  width: 100%;
   overflow-x: auto;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-} */
+  text-align: center; 
+} 
 
 .v-card {
   padding: 20px;
   margin: 10px;
 }
+
 .v-card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
+
 span {
   color: #fff;
   font-weight: 500;
+  font-size: 0.7rem;
+}
+
+.artist_name {
+  width: 150px;
+  white-space: wrap ;
+  word-break: normal;
 }
 </style>

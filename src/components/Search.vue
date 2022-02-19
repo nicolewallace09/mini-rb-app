@@ -6,7 +6,7 @@
         <!-- search input that takes in search term passed from getSearchInfo() -->
         <!-- <input placeholder="SEARCH FOR ARTISTS..." type="search" v-model="search" @input="getSearchInfo" class="mb-1"> -->
         <v-form>
-          <v-container>
+          <v-container fluid>
             <v-row>
               <v-col
               cols="12"
@@ -33,18 +33,17 @@
         <div class="card-container">
           <!-- looping through the search results to display information that user searched --> 
           <v-card
-            width="250px"
-            height="250px"
+            max-height="250px"
             v-for="search in searchInfo" :key="search.id" 
             color="rgba(42, 53, 66, 0.608)"
           >
           <v-img
-            height="100px"
-            width="100px"
+            height="150px"
+            width="150px"
             :src="search.artwork_small"
           >
           </v-img>
-          <span>{{search.artist}}</span>
+          <span><div class="artist_name">{{search.artist}}</div></span>
 
           <v-card-actions>
             <v-btn
@@ -123,15 +122,9 @@ export default {
 </script>
 
 <style scoped>
-/* .container {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  overflow-x: auto;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-} */
+.container{
+  margin-right: 60px;
+}
 
 .card-container {
   display: flex;
@@ -139,9 +132,7 @@ export default {
   flex-direction: row;
   max-height: 500px;
   overflow-y: auto;
-  /* align-items: center;
-  justify-content: center; */
-  /* text-align: center; */
+  text-align: center;
 } 
 
 .v-card {
@@ -149,13 +140,27 @@ export default {
   margin: 10px;
 }
 
+.v-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
 span {
   color: #fff;
   font-weight: 500;
+  font-size: 0.7rem;
+}
+
+.artist_name {
+  width: 150px;
+  white-space: wrap ;
+  word-break: normal;
 }
 
 .theme--light.v-btn.v-btn--outlined.v-btn--text {
   border: 1px solid #fff;
+  position: absolute;
+  bottom: 80px;
+  left: 15px;
 }
 
 a {
