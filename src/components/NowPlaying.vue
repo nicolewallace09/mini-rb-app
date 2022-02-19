@@ -10,34 +10,32 @@
       >
         <v-card
           class="mx-auto"
-          max-width="100%"
+          max-width="500"
+          max-height="500"
           color="rgba(42, 53, 66, 0.608)"
         >
           <v-img
             :src="playlist.artwork_large"
             gradient="to bottom, transparent, #3f86e6"
-            height="500px"
           >
           <v-card-title>{{playlist.song}}</v-card-title>
           <v-card-subtitle>{{playlist.artist}}</v-card-subtitle>
           </v-img>
-        
         </v-card>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
-
-  
-
 <script>
+import axios from "axios";
+
 export default {
   name: 'NowPlaying',
   data() {
     // setting playlist to an empty array and adding the json data from the api
     return {
-      playlist: []
+      playlist: [],    
     }
   }, 
   created() {
@@ -47,23 +45,17 @@ export default {
   }, 
   methods: {
     // fetch api data and getting the json response then to add it to the playlist data
-    getNowPlaying() {
-      fetch('https://api.rockbot.com/v3/engage/now_playing', {
-        method: 'get',
+    async getNowPlaying() {
+      await axios.get('https://api.rockbot.com/v3/engage/now_playing', {
         headers: {
-        // requires API key for authorization --  create .env to store key 
-        Authorization: process.env.VUE_APP_API_KEY
+          // requires API key for authorization --  create .env to store key 
+          Authorization: process.env.VUE_APP_API_KEY
         }
-      })
-        .then((response) => {
-          return response.json()
-        })
-        .then((data) => {
-          this.playlist = data.response.now_playing; 
-        })
-        .catch((error) => {
+      }).then((res) => {
+          this.playlist = res.data.response.now_playing; 
+      }).catch((error) => {
           console.log(error)
-        })
+      })
     }
   }
 }
@@ -71,7 +63,6 @@ export default {
 
 <style scoped>
 .title {
-  color: #fff; 
   font-weight: 700;
 }
 
@@ -80,6 +71,7 @@ export default {
   position: absolute;
   bottom: 30px;
   left: 15px;
+  font-size: 1rem;
 }
 
 .v-card__subtitle{
@@ -87,5 +79,7 @@ export default {
   position: absolute;
   bottom: 15px;
   left: 15px;
+  font-size: 0.7rem;
 }
+
 </style>

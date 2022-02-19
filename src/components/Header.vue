@@ -17,19 +17,7 @@ export default {
 
 <!-- Rockbot blue #3f86e6-->
 <style scoped>
-.v-app-bar {
-    display: flex;
-    justify-content: center;
-}
-
 img {
-    width: 20%;
-}
-
-/* mobile devices */ 
-@media only screen and (max-width: 400px) {
-    img {
-        width: 50%;
-    }
+    width: 200px;
 }
 </style>

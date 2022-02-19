@@ -46,7 +46,12 @@ img {
 }
 
 .v-footer {
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex: 0 1 auto !important; 
+  flex-wrap: wrap;
+  padding: 0px;
 }
 
 /* mobile devices */ 

@@ -20,9 +20,10 @@ export default {
 </script>
 
 <style>
-#app {
+#app, html {
   background: rgb(42, 53, 66); 
-  font-family: 'Roboto', sa;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
 }
 </style>
 

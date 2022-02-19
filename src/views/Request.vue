@@ -2,20 +2,20 @@
 <template>
   <v-container>
     <div class="title">TRENDING ARTISTS</div>
-    <TopArtists/>
+    <!-- <TopArtists/> -->
     <Search/>
   </v-container>
 
 </template>
 
 <script>
-import TopArtists from '../components/TopArtists'
+// import TopArtists from '../components/TopArtists'
 import Search from '../components/Search'
 
 export default {
   name: 'Request',
   components: {
-    TopArtists,
+    // TopArtists,
     Search
   }
 }
