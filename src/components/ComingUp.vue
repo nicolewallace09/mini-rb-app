@@ -60,11 +60,11 @@
 </template>
 
 <script>
-import VueStar from 'vue-star';
-import axios from 'axios'; 
+import VueStar from "vue-star";
+import axios from "axios"; 
 
 export default {
-  name: 'ComingUp',
+  name: "ComingUp",
   components: {
     VueStar
   },

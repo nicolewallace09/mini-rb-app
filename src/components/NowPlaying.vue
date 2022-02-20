@@ -31,7 +31,7 @@
 import axios from "axios";
 
 export default {
-  name: 'NowPlaying',
+  name: "NowPlaying",
   data() {
     // setting playlist to an empty array and adding the json data from the api
     return {
@@ -46,7 +46,7 @@ export default {
   methods: {
     // fetch api data and getting the json response then to add it to the playlist data
     async getNowPlaying() {
-      await axios.get('https://api.rockbot.com/v3/engage/now_playing', {
+      await axios.get("https://api.rockbot.com/v3/engage/now_playing", {
         headers: {
           // requires API key for authorization --  create .env to store key 
           Authorization: process.env.VUE_APP_API_KEY

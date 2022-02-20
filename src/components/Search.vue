@@ -1,53 +1,36 @@
 <!-- component containing search bar and result cards -->
 <template>
-  <div>
+  <v-container>
     <v-row>
       <v-col col="12"> 
         <!-- search input that takes in search term passed from getSearchInfo() -->
-        <!-- <input placeholder="SEARCH FOR ARTISTS..." type="search" v-model="search" @input="getSearchInfo" class="mb-1"> -->
-        <v-form>
-          <v-container fluid>
-            <v-row>
-              <v-col
-              cols="12"
-              >
-              <v-text-field
-                label="Search for Artists..."
-                prepend-inner-icon="mdi-magnify"
-                type="search" 
-                v-model="search" 
-                @input="getSearchInfo" 
-                color="pink"
-                class="text-left"
-              >
-              </v-text-field>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-form>
+        <form>
+          <input type="text" name="search" placeholder="Search for Artist..." v-model="search" @input="getSearchInfo"  >
+        </form>
       </v-col>
     </v-row>
-
+    <v-row>
+      <div class="title">TRENDING ARTISTS</div>
+        <TopArtists/>
+    </v-row> 
     <v-row>
       <v-col col="12">
+        <div class="searchTerm">{{ search ? `SEARCH RESULTS FOR "${search.toUpperCase()}"` : null }}</div>
         <div class="card-container">
           <!-- looping through the search results to display information that user searched --> 
           <v-card
-            max-height="250px"
-            v-for="search in searchInfo" :key="search.id" 
+            width="150px"
+            v-for="search in filteredResults" :key="search.id" 
             color="rgba(42, 53, 66, 0.608)"
           >
-          <v-img
-            height="150px"
-            width="150px"
+          <img
             :src="search.artwork_small"
-          >
-          </v-img>
+          />
+          
           <span><div class="artist_name">{{search.artist}}</div></span>
 
           <v-card-actions>
             <v-btn
-              class="mr-1 ml-3"
               text
               icon
               outlined
@@ -61,30 +44,41 @@
         </div>
       </v-col>
      </v-row>
-  </div>
+  </v-container>
 </template>
 
 <script>
-import VueStar from 'vue-star';
+import VueStar from "vue-star";
 import axios from "axios";
+import TopArtists from './TopArtists';
 
 export default {
-  name: 'Search',
+  name: "Search",
     components: {
-    VueStar
+    VueStar,
+    TopArtists
   },
   data() {
     // setting artists to an empty array and adding the json data from the api
     return {
       searchInfo: [],
-      // topSearch: [],
       search: '',
-      artist_id: 0
+      artist_id: 0,
+      timeout: null
     }
   }, 
   created() {
     this.getSearchInfo()
+    this.requestArtist()
+    setTimeout(() => this.getSearchInfo(), 5000)
   }, 
+  computed: {
+    filteredResults() {
+      return this.searchInfo.filter(result =>
+        result.artist.toLowerCase().includes(this.search.toLowerCase())
+      );
+    }
+  },
   methods: {
     // fetch api data and getting the json response to return user's search query
     async getSearchInfo() {
@@ -96,7 +90,6 @@ export default {
       })
         .then((res) => {
            this.searchInfo = res.data.response; 
-          //  console.log(this.searchInfo)
         })
         .catch((error) => {
           console.log(error)
@@ -122,22 +115,19 @@ export default {
 </script>
 
 <style scoped>
-.container{
-  margin-right: 60px;
-}
-
 .card-container {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  max-height: 500px;
-  overflow-y: auto;
-  text-align: center;
+  overflow-x: auto;
+  margin-bottom: 100px;
 } 
 
 .v-card {
+  margin: 10px; 
   padding: 20px;
-  margin: 10px;
+  text-align: center; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .v-card:hover {
@@ -152,15 +142,18 @@ span {
 
 .artist_name {
   width: 150px;
-  white-space: wrap ;
+  height: 15px;
+  white-space: nowrap ;
   word-break: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .theme--light.v-btn.v-btn--outlined.v-btn--text {
   border: 1px solid #fff;
   position: absolute;
-  bottom: 80px;
-  left: 15px;
+  top: 25px;
+  right: 10px;
 }
 
 a {
@@ -172,8 +165,32 @@ a:hover {
   text-decoration: none;
 }
 
-.v-form > .v-input theme--light v-text-field v-text-field--is-booted {
+.v-form > .v-input.theme--light.v-text-field.v-text-field--is-booted {
   color: white;
 }
 
+.searchTerm {
+  font-weight: 700;
+}
+
+input[type=text] {
+  width: 100%;
+  color: #fff;
+  box-sizing: border-box;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  font-size: 16px;
+  background-color: rgba(42, 53, 66, 0.608);
+  background-image: url('https://img.icons8.com/external-dreamstale-lineal-dreamstale/20/000000/external-search-ui-dreamstale-lineal-dreamstale.png');
+  background-position: 12px 12px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+}
+
+.title {
+  color: #fff; 
+  font-weight: 700;
+  margin-top: 20px;
+  margin-left: 15px;
+}
 </style>

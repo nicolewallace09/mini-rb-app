@@ -1,21 +1,27 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Playlist from '@/views/Playlist'
-import Request from '@/views/Request'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Playlist from '@/views/Playlist';
+import Request from '@/views/Request';
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Playlist',
-      component: Playlist
-    },
-    {
-      path: '/request',
-      name: 'Request',
-      component: Request
-    }
-  ]
+const routes = [
+  {
+    path: "/",
+    name: "Playlist",
+    component: Playlist
+  },
+  {
+    path: "/request",
+    name: "Request",
+    component: Request
+  }
+]
+
+const router = new VueRouter({
+  mode: "history",
+  base: process.env.BASE_URL,
+  routes
 })
+
+export default router;

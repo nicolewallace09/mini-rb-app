@@ -1,6 +1,6 @@
 <!-- page view that contains NowPlaying and ComingUp components -->
 <template>
-  <v-container fluid class="playlistContainer">
+  <v-container class="playlistContainer">
     <v-row>
       <v-col lg="6" m="6" s="6" xs="12">
         <NowPlaying/>
@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import ComingUp from '../components/ComingUp'
-import NowPlaying from '../components/NowPlaying'
+import ComingUp from "../components/ComingUp";
+import NowPlaying from "../components/NowPlaying";
 
 export default {
-  name: 'Playlist',
+  name: "Playlist",
   components: {
     ComingUp,
     NowPlaying
@@ -27,7 +27,6 @@ export default {
 
 <style scoped>
 .playlistContainer {
-  margin-top: 50px;
-  margin-bottom: 0px;
+  margin-top: 20px;
 }
 </style>
