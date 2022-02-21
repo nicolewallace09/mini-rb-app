@@ -150,6 +150,9 @@ export default {
 
 .v-card__title {
   font-size: 1rem;
+  width: 400px;
+  white-space: wrap ;
+  word-break: normal;
 }
 
 .v-card__subtitle{
@@ -182,6 +185,7 @@ a:hover {
 @media screen and (max-width: 600px) {
   .v-card__title {
     font-size: 0.7rem;
+    width: 200px;
   }
 
   .v-card__subtitle{

@@ -8,7 +8,7 @@
         class="mx-2"
         color="#3f86e6"
         >
-            <router-link to="/" class="nav-link">Playlist</router-link>
+            <router-link to="/playlist" class="nav-link">Playlist</router-link>
         </v-btn>
         <v-btn
         elevation="2"
@@ -55,7 +55,7 @@ img {
 }
 
 /* mobile devices */ 
-@media only screen and (max-width: 400px) {
+@media only screen and (min-width: 400px) {
     img {
         width: 50%;
     }

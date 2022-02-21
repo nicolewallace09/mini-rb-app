@@ -5,23 +5,30 @@
         dense
         height="80"
       >
-        <v-toolbar-title><a href="/"><img src="../../src/assets/logo.png" class="center d-inline-block align-self-center" alt="rockbot-logo"></a></v-toolbar-title>
+        <v-toolbar-title><a href="/playlist"><img src="../../src/assets/logo.png" class="center d-inline-block align-self-center" alt="rockbot-logo"></a></v-toolbar-title>
         <v-spacer></v-spacer>
-
-        <a a href="/">Log In</a>  
-
-        <v-btn
-        outlined
-        background="gba(255, 255, 255, 0.608)"
-        >
-        <a a href="/">Sign Up</a>
-        </v-btn>
+        <!-- <a href="/browseartist">Browse Artists</a> -->
+        <v-button @click="logout">Logout</v-button>
     </v-app-bar>
 </template>
 
 <script>
+import firebase from "firebase/app"; 
+
 export default {
-  name: "Header"
+  name: "Header",
+  methods: {
+      logout () {
+          firebase.auth().signOut().then(() => {
+              console.log('Successfully logged out.')
+              this.$router.push("/");
+          })
+          .catch(error => {
+              console.log(error.message); 
+              this.$router.push("/");
+          });
+      }
+  }
 }
 </script>
 
@@ -31,7 +38,7 @@ img {
     width: 200px;
 }
 
-a {
+.v-button {
     color: #fff;
     text-decoration: none;
 }
