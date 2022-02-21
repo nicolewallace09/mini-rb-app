@@ -20,13 +20,20 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+let app; 
+firebase.auth().onAuthStateChanged(user => {
+  console.log(user)
+  if(!app) {
+    app = new Vue({
+      render: h => h(App), router
+    }).$mount('#app')
+  }
+})
 
 Vue.config.productionTip = false
 Vue.use(Vuetify);
 Vue.use(VueAxios, axios);
 Vue.use(VueCompositionAPI);
 
-new Vue({
-  render: h => h(App), router
-}).$mount('#app')
+
 
