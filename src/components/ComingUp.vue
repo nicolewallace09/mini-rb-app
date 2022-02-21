@@ -103,8 +103,8 @@ export default {
         Authorization: process.env.VUE_APP_API_KEY
         }
       }).then((res) => {
-          console.log(res)
           this.getComingUp();
+          return res;
       }).catch((error) => {
           console.log(error)
       })
@@ -118,8 +118,8 @@ export default {
         Authorization: process.env.VUE_APP_API_KEY
         }
       }).then((res) => {
-          console.log(res)
           this.getComingUp();
+          return res;
       }).catch((error) => {
           console.log(error)
       })
