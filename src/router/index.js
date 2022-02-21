@@ -12,6 +12,11 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: "/",
+    name: "GetStarted",
+    component: GetStarted
+  },
+  {
     path: "/playlist",
     name: "Playlist",
     component: Playlist,
@@ -36,11 +41,6 @@ const routes = [
     path: "/signup",
     name: "Signup",
     component: Signup
-  }, 
-  {
-    path: "/",
-    name: "GetStarted",
-    component: GetStarted
   },
   {
     path: "/browseartist",
@@ -63,7 +63,7 @@ router.beforeEach((to, from, next) => {
     } else {
       alert('You must be logged in to see this page');
       next({
-        path: '/start',
+        path: '/',
       });
     }
   } else {

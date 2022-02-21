@@ -5,7 +5,7 @@
         dense
         height="80"
       >
-        <v-toolbar-title><a href="/playlist"><img src="../../src/assets/logo.png" class="center d-inline-block align-self-center" alt="rockbot-logo"></a></v-toolbar-title>
+        <v-toolbar-title><img src="../../src/assets/logo.png" class="center d-inline-block align-self-center" alt="rockbot-logo"></v-toolbar-title>
         <v-spacer></v-spacer>
         <!-- <a href="/browseartist">Browse Artists</a> -->
         <v-button @click="logout">Logout</v-button>
@@ -38,12 +38,12 @@ img {
     width: 200px;
 }
 
-.v-button {
+.theme--light.v-sheet {
     color: #fff;
     text-decoration: none;
 }
 
-a:hover {
+.theme--light.v-sheet:hover {
     color: #3f86e6;
     text-decoration: none;
 }
