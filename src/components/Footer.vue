@@ -8,7 +8,7 @@
         class="mx-2"
         color="#3f86e6"
         >
-            <router-link to="/" class="nav-link">Playlist</router-link>
+            <router-link to="/playlist" class="nav-link">Playlist</router-link>
         </v-btn>
         <v-btn
         elevation="2"
@@ -46,11 +46,16 @@ img {
 }
 
 .v-footer {
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex: 0 1 auto !important; 
+  flex-wrap: wrap;
+  padding: 0px;
 }
 
 /* mobile devices */ 
-@media only screen and (max-width: 400px) {
+@media only screen and (min-width: 400px) {
     img {
         width: 50%;
     }

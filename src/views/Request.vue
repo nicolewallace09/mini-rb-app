@@ -1,29 +1,31 @@
 <!-- page view that contains TopArtists and Search components -->
 <template>
-  <v-container>
-    <div class="title">TRENDING ARTISTS</div>
-    <TopArtists/>
-    <Search/>
-  </v-container>
-
+  <main class="request">
+    <Header/>
+    <v-container>
+      <Search/>
+    </v-container>
+    <Footer/>
+  </main>
 </template>
 
 <script>
-import TopArtists from '../components/TopArtists'
-import Search from '../components/Search'
+import Search from "../components/Search";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default {
-  name: 'Request',
+  name: "Request",
   components: {
-    TopArtists,
-    Search
+    Search,
+    Header,
+    Footer
   }
 }
 </script>
 
 <style scoped>
-.title {
-  color: #fff; 
-  font-weight: 700;
-}
+/* .container, .container-sm, .container-md {
+  max-width: 1500px;
+} */
 </style>

@@ -1,13 +1,11 @@
 # Mini Rockbot 
 
 ## Description 
-This is an application for Rockbot that uses REST API to allow users to see what's playing, vote, and request music. 
+This is an application build in Vue for Rockbot that uses REST API to allow users to see what's playing, vote, trending artists, and request music. This application uses Vuetify as the framework for components, Axios for API requests, and Vue Router. User will be able to like and dislike songs which will either move them up or down in the queue and can look for artists to add to the playlist queue. 
 
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
-* [Contributing](#contributing)
-* [Tests](#tests)
 * [Questions](#questions)
 
 ## Installation 
@@ -15,12 +13,6 @@ This application uses Vue CLI and Vue router which will need to be installed. Af
 
 ## Usage 
 This application will allow users to view the current song in the playlist and the next songs in the queue. Users will also be able to view top artists and search through artists.<br>
-
-## Contributing 
-Contributors should read the installation section. 
-
-## Tests
-No tests are used in this application.
 
 ## Questions
 If you have any questions about this projects, please contact me directly at nicole.elisaw@gmail.com. You can view more of my projects at https://github.com/nicolewallace09.

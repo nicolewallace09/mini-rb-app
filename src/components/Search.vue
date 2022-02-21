@@ -4,145 +4,193 @@
     <v-row>
       <v-col col="12"> 
         <!-- search input that takes in search term passed from getSearchInfo() -->
-        <input placeholder="SEARCH FOR ARTISTS..." v-model="search" @input="getSearchInfo" class="mb-1">
+        <form>
+          <input type="text" name="search" placeholder="Search for Artist..." v-model="search" @input="getSearchInfo"  >
+        </form>
       </v-col>
-
-      <v-col col="8">
-        <v-container class="container">
+    </v-row>
+    <v-row>
+      <div class="title">TRENDING ARTISTS</div>
+        <TopArtists/>
+    </v-row> 
+    <v-row>
+      <v-col col="12">
+        <div class="searchTerm">{{ search ? `SEARCH RESULTS FOR "${search.toUpperCase()}"` : null }}</div>
+        <div class="card-container">
           <!-- looping through the search results to display information that user searched --> 
           <v-card
-            width="400px"
-            height="300px"
-            v-for="search in searchInfo" :key="search.id" 
+            width="150px"
+            v-for="search in filteredResults" :key="search.id" 
             color="rgba(42, 53, 66, 0.608)"
           >
-          <v-img
-            height="200px"
-            width="200px"
+          <img
             :src="search.artwork_small"
-          >
-          </v-img>
-          <span>{{search.artist}}</span>
+          />
+          
+          <span><div class="artist_name">{{search.artist}}</div></span>
 
           <v-card-actions>
             <v-btn
-              class="mr-1 ml-3"
               text
               icon
               outlined
             >
               <vue-star animate="animated rubberBand" color="#fff">
-                <a slot="icon" class="fa fa-plus" @click="getSearchInfo(search.artist_id, $event)" method="post"></a>
+                <a slot="icon" class="fa fa-plus" @click="requestArtist(search.artist_id, $event)" method="post"></a>
               </vue-star>
             </v-btn>
           </v-card-actions>
           </v-card>
-        </v-container>
+        </div>
       </v-col>
      </v-row>
   </v-container>
 </template>
 
 <script>
-import VueStar from 'vue-star'
+import VueStar from "vue-star";
+import axios from "axios";
+import TopArtists from './TopArtists';
 
 export default {
-  name: 'Search',
+  name: "Search",
     components: {
-    VueStar
+    VueStar,
+    TopArtists
   },
   data() {
     // setting artists to an empty array and adding the json data from the api
     return {
       searchInfo: [],
-      // topSearch: [],
-      search: ''
+      search: '',
+      artist_id: 0,
+      timeout: null
     }
   }, 
   created() {
     this.getSearchInfo()
+    this.requestArtist()
+    setTimeout(() => this.getSearchInfo(), 5000)
   }, 
+  computed: {
+    filteredResults() {
+      return this.searchInfo.filter(result =>
+        result.artist.toLowerCase().includes(this.search.toLowerCase())
+      );
+    }
+  },
   methods: {
-    // using a post request and passing in artist_id to request artist 
-    getSearchInfo(artist_id) {
-      fetch(`https://api.rockbot.com/v3/engage/request_artist?artist_id=${artist_id}`, {
-        method: 'post',
-        headers: {
-         'Accept': 'application/json', 
-         // requires API key for authorization --  create .env to store key 
-        Authorization: process.env.VUE_APP_API_KEY
-        }
-      })
-      // fetch api data and getting the json response to return user's search query
-      fetch(`https://api.rockbot.com/v3/engage/search_artists?query=${this.search}`, {
-        method: 'get',
+    // fetch api data and getting the json response to return user's search query
+    async getSearchInfo() {
+      await axios.get(`https://api.rockbot.com/v3/engage/search_artists?query=${this.search}`, {
         headers: {
          // requires API key for authorization --  create .env to store key 
         Authorization: process.env.VUE_APP_API_KEY
         }
       })
-        .then((response) => {
-          return response.json()
-        })
-        .then((data) => {
-          this.searchInfo = data.response; 
-          // this.topSearch = data.response[0]; 
+        .then((res) => {
+           this.searchInfo = res.data.response; 
         })
         .catch((error) => {
           console.log(error)
         })
+    },
+    // using a post request and passing in artist_id to request artist 
+    async requestArtist(artist_id) {
+      await axios.post(`https://api.rockbot.com/v3/engage/request_artist?artist_id=${artist_id}`, { artist_id: this.artist_id}, {
+        headers: {
+          'Accept': 'application/json', 
+          // requires API key for authorization --  create .env to store key 
+          Authorization: process.env.VUE_APP_API_KEY
+        }
+      }).then((res) => {
+          console.log(res)
+      }).catch((error) => {
+          console.log(error)
+      })
+      
     }
   }
 }
 </script>
 
 <style scoped>
-.container {
+.card-container {
   display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
   overflow-x: auto;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
+  margin-bottom: 100px;
+} 
 
 .v-card {
+  margin: 10px; 
   padding: 20px;
-  margin: 10px;
+  text-align: center; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.v-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 span {
   color: #fff;
   font-weight: 500;
+  font-size: 0.7rem;
+}
+
+.artist_name {
+  width: 150px;
+  height: 15px;
+  white-space: nowrap ;
+  word-break: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .theme--light.v-btn.v-btn--outlined.v-btn--text {
   border: 1px solid #fff;
+  position: absolute;
+  top: 25px;
+  right: 10px;
 }
 
 a {
   color: white;
 }
+
 a:hover {
   color: #3f86e6;
   text-decoration: none;
 }
 
-input {
-  background-color: #fff;  
-  border: none;
-  color: #184274;
-  font-family: 'Secular One', sans-serif;
+.v-form > .v-input.theme--light.v-text-field.v-text-field--is-booted {
+  color: white;
+}
+
+.searchTerm {
+  font-weight: 700;
+}
+
+input[type=text] {
   width: 100%;
+  color: #fff;
+  box-sizing: border-box;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  font-size: 16px;
+  background-color: rgba(42, 53, 66, 0.608);
+  background-image: url('https://img.icons8.com/external-dreamstale-lineal-dreamstale/20/000000/external-search-ui-dreamstale-lineal-dreamstale.png');
+  background-position: 12px 12px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
 }
 
-input::placeholder {
-  color: #184274;
-  border: 5px black;
-}
-
-input:focus {
-  border-color: #184274;
+.title {
+  color: #fff; 
+  font-weight: 700;
+  margin-top: 20px;
+  margin-left: 15px;
 }
 </style>

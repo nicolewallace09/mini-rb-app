@@ -1,26 +1,24 @@
 <!-- component to display top artisted to be used in the request page -->
 <template>
-  <v-container class="container">
+  <div class="container">
     <v-card
-      width="400px"
-      height="300px"
+      width="150px"
       v-for="artist in artists" :key="artist.id"
       color="rgba(42, 53, 66, 0.608)"
     >
-    <v-img
-      height="200px"
-      width="200px"
+    <img
       :src="artist.artwork_small"
-    >
-    </v-img>
-    <span>{{artist.artist}}</span>
+    />
+    <span><div class="artist_name">{{artist.artist}}</div></span>
     </v-card>
-  </v-container>
+  </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: 'TopArtists',
+  name: "TopArtists",
   data() {
     // setting artists to an empty array and adding the json data from the api
     return {
@@ -32,23 +30,17 @@ export default {
   }, 
   methods: {
     // fetch api data and getting the json response to return artist info
-    getTopArtists() {
-      fetch('https://api.rockbot.com/v3/engage/top_artists', {
-        method: 'get',
+    async getTopArtists() {
+      await axios.get("https://api.rockbot.com/v3/engage/top_artists", {
         headers: {
-         // requires API key for authorization --  create .env to store key 
-        Authorization: process.env.VUE_APP_API_KEY
+          // requires API key for authorization --  create .env to store key 
+          Authorization: process.env.VUE_APP_API_KEY
         }
-      })
-        .then((response) => {
-          return response.json()
-        })
-        .then((data) => {
-          this.artists = data.response; 
-        })
-        .catch((error) => {
+      }).then((res) => {
+          this.artists = res.data.response; 
+      }).catch((error) => {
           console.log(error)
-        })
+      })
     }
   }
 }
@@ -57,17 +49,16 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
   overflow-x: auto;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
+} 
 
 .v-card {
+  margin: 10px; 
   padding: 20px;
-  margin: 10px;
+  text-align: center; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .v-card:hover {
@@ -77,6 +68,12 @@ export default {
 span {
   color: #fff;
   font-weight: 500;
+  font-size: 0.7rem;
 }
 
+.artist_name {
+  width: 150px;
+  white-space: wrap ;
+  word-break: normal;
+}
 </style>
