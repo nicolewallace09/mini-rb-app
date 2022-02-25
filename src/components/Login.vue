@@ -44,8 +44,15 @@
                
                 <v-row>
                     <v-col col="12">
+                          <v-alert
+                                color="error"
+                                :value="error"
+                            >
+                                 {{ message }}
+                            </v-alert>
                         <span>Not Signed Up?</span> <router-link to="/signup">Sign Up</router-link>
-                      </v-col>
+                    
+                    </v-col>
                 </v-row>
             </v-container>
         </form>
@@ -62,6 +69,8 @@ export default {
       return {
           email: "",
           password: "",
+          error: false,
+          message: ''
       }
   },
   methods: {
@@ -69,11 +78,11 @@ export default {
           //logging in user 
           firebase.auth().signInWithEmailAndPassword(this.email, this.password)
           .then(() => {
-              alert('Successfully logged in'); 
               this.$router.push('/playlist');
           })
-          .catch(error => {
-              alert(error.message); 
+          .catch((err) => {
+               this.error = true; 
+               this.message = err.message;
           }); 
       }
   }
