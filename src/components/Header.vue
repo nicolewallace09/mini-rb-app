@@ -8,7 +8,7 @@
         <v-toolbar-title><a href="/playlist"><img src="../../src/assets/logo.png" class="center d-inline-block align-self-center" alt="rockbot-logo"></a></v-toolbar-title>
         <v-spacer></v-spacer>
         <!-- <a href="/browseartist">Browse Artists</a> -->
-        <a @click="logout">Logout</a>
+        <a class="logout" @click="logout">Logout</a>
     </v-app-bar>
 </template>
 
@@ -38,16 +38,15 @@ img {
     width: 200px;
 }
 
-.theme--light.v-sheet {
+a.logout {
     color: #fff;
     text-decoration: none;
 }
 
-.theme--light.v-sheet:hover {
+a.logout:hover {
     color: #3f86e6;
     text-decoration: none;
 }
-
 
 .v-btn {
     margin-left: 10px;
