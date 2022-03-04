@@ -110,4 +110,11 @@ input[type=text] {
   background-repeat: no-repeat;
   padding: 12px 20px 12px 40px;
 }
+
+.title {
+  color: #fff; 
+  font-weight: 700;
+  margin-top: 20px;
+  margin-left: 15px;
+}
 </style>
