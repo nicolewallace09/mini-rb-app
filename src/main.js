@@ -6,7 +6,6 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 import axios from 'axios';
 import Vuetify from 'vuetify';
 import VueAxios from 'vue-axios';
-import VueCompositionAPI from '@vue/composition-api'
 import firebase from 'firebase/app';
 
 const firebaseConfig = {
@@ -30,9 +29,8 @@ firebase.auth().onAuthStateChanged(() => {
 })
 
 Vue.config.productionTip = false
-Vue.use(Vuetify);
+Vue.use(Vuetify)
 Vue.use(VueAxios, axios);
-Vue.use(VueCompositionAPI);
 
 
 

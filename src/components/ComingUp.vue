@@ -115,7 +115,7 @@ export default {
         headers: {
         'Accept': 'application/json',
         // requires API key for authorization --  create .env to store key 
-        Authorization: process.env.VUE_APP_API_KEY
+        Authorization:  process.env.VUE_APP_API_KEY
         }
       }).then((res) => {
           this.getComingUp();

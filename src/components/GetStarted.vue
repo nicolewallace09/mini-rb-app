@@ -8,24 +8,24 @@
         <v-row justify="center">
             <v-col col="12">
                 <v-btn
-                elevation="2"
-                rounded
-                x-large
-                outlined
-                class="mx-2"
-                color="#fff"
+                    elevation="2"
+                    rounded
+                    x-large
+                    outlined
+                    class="mx-2"
+                    color="#fff"
                 >
                     <router-link to="/signup" class="nav-link">Sign Up</router-link>
                 </v-btn>
             <!-- </v-col>
             <v-col col="12"> -->
                 <v-btn
-                elevation="2"
-                rounded
-                x-large
-                outlined
-                class="mx-2"
-                color="#fff"
+                    elevation="2"
+                    rounded
+                    x-large
+                    outlined
+                    class="mx-2"
+                    color="#fff"
                 >
                     <router-link to="/login" class="nav-link">Log In</router-link>
                 </v-btn>

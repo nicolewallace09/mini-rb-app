@@ -1,12 +1,12 @@
 <template>
     <div>
-     <v-button
+     <!-- <v-button
         v-for="(letter, index) in letterList"
         :item="letter"
         :key="index"
       >
         {{ letter }}
-    </v-button>
+    </v-button> -->
 
 
 
